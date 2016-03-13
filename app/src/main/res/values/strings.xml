@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Task1</string>
+
+    <string name="action_settings">Налаштування</string>
+    <string name="pageTitle">Комунальне господарство</string>
+    <string name="btnStatus">В роботі</string>
+    <string name="create_text">Створено</string>
+    <string name="date_create_text">25 лютого 2016</string>
+    <string name="reg_text">Зареєстровано</string>
+    <string name="date_reg_text">26 лютого 2016</string>
+    <string name="deadline_text">Вирішити до</string>
+    <string name="date_deadline_text">29 лютого 2016</string>
+    <string name="resp_text">Відповідальний</string>
+    <string name="date_resp_text">Дніпропетровський МВК ()</string>
+    <string name="content_task">Открытый люк (возле рекламного щита), район поворота 18 и 19 трамваев на проспект Мира с
+        Донецкого шоссе
+    </string>
+</resources>

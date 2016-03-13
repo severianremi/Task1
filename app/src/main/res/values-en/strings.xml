@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Task1</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="pageTitle">Municipal economy</string>
+    <string name="btnStatus">In process</string>
+    <string name="create_text">Created</string>
+    <string name="date_create_text">25 february 2016</string>
+    <string name="reg_text">Registered</string>
+    <string name="date_reg_text">26 february 2016</string>
+    <string name="deadline_text">Deadline</string>
+    <string name="date_deadline_text">29 february 2016</string>
+    <string name="resp_text">Responsible</string>
+    <string name="date_resp_text">Dnipripetrovsk MVK ()</string>
+</resources>
