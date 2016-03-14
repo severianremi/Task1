@@ -3,4 +3,7 @@
     <color name="text_color_black">#000000</color>
     <color name="btn_text_color">#FFFFFF</color>
     <color name="text_color_grey">#a5a5a5</color>
+    <color name="status_color_orange">#F79700</color>
+    <color name="actionbar_color_blue">#557cac</color>
+    <color name="content_background_color">#ebebeb</color>
 </resources>
