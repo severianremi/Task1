@@ -30,13 +30,11 @@
     <style name="HorizontalLineStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:background">@color/border_line_color</item>
         <item name="android:layout_marginBottom">@dimen/base_vertical_margin</item>
     </style>
 
-    <style name="BoldHorizontalLineStyle" parent="HorizontalLineStyle">
-        <item name="android:background">@android:color/black</item>
-    </style>
+
 
 
 </resources>

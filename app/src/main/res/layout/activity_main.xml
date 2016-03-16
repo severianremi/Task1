@@ -1,117 +1,91 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-                android:background="@color/content_background_color"
-            tools:context=".MainActivity">
-
-    <ScrollView android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
-
-
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:background="@color/content_background_color"
+                android:id="@+id/mainLayout"
+                tools:context=".MainActivity">
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pageTitle"
-                    android:id="@+id/textView"
+                    android:id="@+id/headText"
                     android:textSize="@dimen/pageTitleSize"
                     android:textColor="@color/text_color_black"
                     android:layout_marginBottom="@dimen/base_vertical_margin"/>
             <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btnStatus"
-                    android:id="@+id/btnStatus"
-                    android:textColor="@color/btn_text_color"
-                    android:textSize="@dimen/content_text_size"
-                    android:background="@drawable/status_shape"
-                    android:textAllCaps="false"
-                    android:layout_marginBottom="@dimen/base_vertical_margin"/>
-            <View
-                    style="@style/HorizontalLineStyle"
-            />
+                      android:layout_height="wrap_content"
+                      android:text="@string/btnStatus"
+                      android:id="@+id/reqStatus"
+                      android:textColor="@color/btn_text_color"
+                      android:textSize="@dimen/content_text_size"
+                      android:background="@drawable/status_shape"
+                      android:textAllCaps="false"
+                      android:layout_marginBottom="@dimen/base_vertical_margin"/>
+            <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
                     style="@style/StatusRowStyle"
-                    android:id="@+id/statusRow1"
-            >
+                    android:id="@+id/statusRow1">
 
                 <TextView
                         style="@style/LeftStatusContentStyle"
                         android:text="@string/create_text"
-                        android:id="@+id/createTextView"
-                />
+                        android:id="@+id/createTextView"/>
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_create_text"
-                        android:id="@+id/dataCreateTextView"
-                />
+                        android:id="@+id/dataCreateTextView"/>
             </LinearLayout>
-            <View
-                    style="@style/HorizontalLineStyle"
-            />
+            <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
                     style="@style/StatusRowStyle"
-                    android:id="@+id/statusRow2"
-            >
+                    android:id="@+id/statusRow2">
                 <TextView
                         style="@style/LeftStatusContentStyle"
                         android:text="@string/reg_text"
-                        android:id="@+id/regTextView"
-                />
+                        android:id="@+id/regTextView"/>
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_reg_text"
-                        android:id="@+id/dataRegTextView"
-                />
+                        android:id="@+id/dataRegTextView"/>
             </LinearLayout>
-            <View
-                    style="@style/BoldHorizontalLineStyle"
-            />
+            <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
                     style="@style/StatusRowStyle"
-                    android:id="@+id/statusRow3"
-            >
+                    android:id="@+id/statusRow3">
                 <TextView
                         style="@style/LeftStatusContentStyle"
                         android:text="@string/deadline_text"
-                        android:id="@+id/deadlineTextView"
-                />
+                        android:id="@+id/deadlineTextView"/>
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_deadline_text"
-                        android:id="@+id/dataDeadlineTextView"
-                />
+                        android:id="@+id/dataDeadlineTextView"/>
             </LinearLayout>
-            <View
-                    style="@style/HorizontalLineStyle"
-            />
+            <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
                     style="@style/StatusRowStyle"
-                    android:id="@+id/statusRow4"
-            >
+                    android:id="@+id/statusRow4">
                 <TextView
                         style="@style/LeftStatusContentStyle"
                         android:text="@string/resp_text"
-                        android:id="@+id/respTextView"
-                />
+                        android:id="@+id/respTextView"/>
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_resp_text"
-                        android:id="@+id/dataRespTextView"
-                />
+                        android:id="@+id/dataRespTextView"/>
             </LinearLayout>
-            <View
-                    style="@style/HorizontalLineStyle"
-            />
+            <View style="@style/HorizontalLineStyle"/>
             <TextView
                     style="@style/ContentStyle"
                     android:text="@string/content_task"
@@ -119,8 +93,6 @@
                     android:textColor="@color/text_color_black"
                     android:layout_marginTop="@dimen/content_task_margin_top"
                     android:layout_marginBottom="@dimen/content_task_margin"/>
-
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
