@@ -4,6 +4,8 @@ package com.anja.task1.app;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         setOnClickListenerForChildren((ViewGroup) findViewById(R.id.mainLayout));
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.images_layout_id);
+        LinearLayoutManager lm
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rv.setLayoutManager(lm);
+        TaskImageRecycleViewAdapter adapter = new TaskImageRecycleViewAdapter();
+        rv.setAdapter(adapter);
     }
 
     @Override
@@ -63,4 +74,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
 }

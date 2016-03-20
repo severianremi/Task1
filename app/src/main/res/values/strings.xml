@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Task1</string>
+    <string name="app_name">CE-1257218</string>
 
     <string name="action_settings">Налаштування</string>
     <string name="pageTitle">Комунальне господарство</string>
@@ -13,6 +13,7 @@
     <string name="resp_text">Відповідальний</string>
     <string name="date_resp_text">Дніпропетровський МВК ()</string>
     <string name="content_task">Открытый люк (возле рекламного щита), район поворота 18 и 19 трамваев на проспект Мира с
-        Донецкого шоссе
-    </string>
+        Донецкого шоссе</string>
+
+
 </resources>

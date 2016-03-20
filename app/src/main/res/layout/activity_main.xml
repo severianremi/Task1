@@ -93,6 +93,13 @@
                     android:textColor="@color/text_color_black"
                     android:layout_marginTop="@dimen/content_task_margin_top"
                     android:layout_marginBottom="@dimen/content_task_margin"/>
+            <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/images_layout_id"
+                    android:scrollbars="horizontal"
+/>
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

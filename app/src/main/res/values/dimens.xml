@@ -9,4 +9,7 @@
     <dimen name="status_shape_radius">70dp</dimen>
     <dimen name="status_shape_padding_width">10dp</dimen>
     <dimen name="status_shape_padding_height">5dp</dimen>
+    <dimen name="task_image_width">155dp</dimen>
+    <dimen name="task_image_height">200dp</dimen>
+    <dimen name="task_image_margin">10dp</dimen>
 </resources>
