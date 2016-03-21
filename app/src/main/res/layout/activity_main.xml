@@ -103,3 +103,5 @@
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
+
+<!-- [Comment] You can make scrollview as rootview

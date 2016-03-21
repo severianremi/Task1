@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 
 
-
+//[Comment] Wrong status bar color
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        setOnClickListenerForChildren((ViewGroup) findViewById(R.id.mainLayout));
+        setOnClickListenerForChildren((ViewGroup) findViewById(R.id.mainLayout)); //[Comment] Please don't use upper-case in id-names
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.images_layout_id);
+        RecyclerView rv = (RecyclerView) findViewById(R.id.images_layout_id); //Comment rv replace to recyclerViewImages (more informative)
         LinearLayoutManager lm
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rv.setLayoutManager(lm);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case android.R.id.home:
                 android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(0);
+                System.exit(0); //[Comment] Just call finish()
             case R.id.action_settings:
                 return true;
             default:
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setOnClickListenerForChildren(ViewGroup parent) {
-        for (int i = parent.getChildCount() - 1; i >= 0; i--) {
+        for (int i = parent.getChildCount() - 1; i >= 0; i--) {  //[Comment] for(int i= 0; i < parent.getChildCount() - 1; i++)
             final View child = parent.getChildAt(i);
             if (child instanceof ViewGroup) {
                 setOnClickListenerForChildren((ViewGroup) child);
