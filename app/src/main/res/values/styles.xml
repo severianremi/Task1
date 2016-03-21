@@ -1,7 +1,8 @@
 <resources>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/actionbar_color_blue</item>
+        <item name="colorPrimaryDark">@color/status_bar_color_dark_blue</item>
     </style>
 
     <style name="ContentStyle">
@@ -33,8 +34,5 @@
         <item name="android:background">@color/border_line_color</item>
         <item name="android:layout_marginBottom">@dimen/base_vertical_margin</item>
     </style>
-
-
-
 
 </resources>

@@ -4,12 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class TaskImageRecycleViewAdapter extends RecyclerView.Adapter<TaskImageViewHolder> {
+public class TaskImageRecycleViewAdapter extends RecyclerView.Adapter<TaskImageRecycleViewAdapter.TaskImageViewHolder> {
 
     private List<Integer> images = Arrays.asList(
             R.drawable.manhole,
@@ -28,15 +29,27 @@ public class TaskImageRecycleViewAdapter extends RecyclerView.Adapter<TaskImageV
     @Override
     public void onBindViewHolder(TaskImageViewHolder holder, int position) {
         Picasso
-                .with(holder.imgView.getContext())
+                .with(holder.taskImageView.getContext())
                 .load(images.get(position))
                 .fit()
                 .centerInside()
-                .into(holder.imgView);
+                .into(holder.taskImageView);
     }
 
     @Override
     public int getItemCount() {
         return images.size();
     }
+
+
+    public static class TaskImageViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView taskImageView;
+
+        public TaskImageViewHolder(View itemView) {
+            super(itemView);
+            taskImageView = (ImageView) itemView;
+        }
+    }
+
 }
