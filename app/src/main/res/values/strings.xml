@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">CE-1257218</string>
 
-    <string name="action_settings">Налаштування</string>
     <string name="pageTitle">Комунальне господарство</string>
     <string name="btnStatus">В роботі</string>
     <string name="create_text">Створено</string>

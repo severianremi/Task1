@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TaskImageRecycleViewAdapter extends RecyclerView.Adapter<TaskImageRecycleViewAdapter.TaskImageViewHolder> {
 
-    private List<Integer> images = Arrays.asList(
+    private List<Integer> mImages = Arrays.asList(
             R.drawable.manhole,
             R.drawable.open_manhole,
             R.drawable.trams,
@@ -29,26 +29,26 @@ public class TaskImageRecycleViewAdapter extends RecyclerView.Adapter<TaskImageR
     @Override
     public void onBindViewHolder(TaskImageViewHolder holder, int position) {
         Picasso
-                .with(holder.taskImageView.getContext())
-                .load(images.get(position))
+                .with(holder.mTaskImageView.getContext())
+                .load(mImages.get(position))
                 .fit()
                 .centerInside()
-                .into(holder.taskImageView);
+                .into(holder.mTaskImageView);
     }
 
     @Override
     public int getItemCount() {
-        return images.size();
+        return mImages.size();
     }
 
 
     public static class TaskImageViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView taskImageView;
+        private ImageView mTaskImageView;
 
         public TaskImageViewHolder(View itemView) {
             super(itemView);
-            taskImageView = (ImageView) itemView;
+            mTaskImageView = (ImageView) itemView;
         }
     }
 
