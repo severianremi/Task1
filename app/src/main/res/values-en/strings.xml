@@ -12,4 +12,7 @@
     <string name="date_deadline_text">29 february 2016</string>
     <string name="resp_text">Responsible</string>
     <string name="date_resp_text">Dnipropetrovsk MVK ()</string>
+    <string name="all_request_item">All request</string>
+    <string name="request_on_map_item">Request on map</string>
+    <string name="login_item">Sign in</string>
 </resources>
