@@ -21,5 +21,10 @@
     <string name="login_item">Увійти в аккаунт</string>
     <string name="nav_header_text">e-contact</string>
     <string name="nav_footer_text"><![CDATA[Зроблено з любов&apos;ю <br/> <u><font color=#f78b4a>IT Ruh Dnipro</u> та <u><font color=#f78b4a>Yalantis</u>]]></string>
+    <string name="content_req_ic_text">0</string>
+    <string name="content_req_title_text">Комунальне господарство</string>
+    <string name="content_req_address_tv">вул. Б.Короткова, 22, Дніпропетровськ</string>
+    <string name="content_req_date_text">Лют. 09, 2016</string>
+    <string name="content_req_work_time_text">7 днів</string>
 
 </resources>

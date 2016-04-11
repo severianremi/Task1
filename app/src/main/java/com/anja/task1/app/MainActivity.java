@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        InWorkAndDoneFragment f = new InWorkAndDoneFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, f).commit();
 
     }
 

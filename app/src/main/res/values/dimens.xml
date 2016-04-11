@@ -18,4 +18,17 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="nav_header_text_size">14pt</dimen>
     <dimen name="nav_footer_margin">25dp</dimen>
+    <dimen name="content_main_layout_margin">5dp</dimen>
+    <dimen name="content_ic_layout_margin_right">30dp</dimen>
+    <dimen name="content_ic_layout_margin">10dp</dimen>
+    <dimen name="content_ic_layout_top">15dp</dimen>
+    <dimen name="content_req_ic_margin_top">20dp</dimen>
+    <dimen name="content_req_ic_margin_right">3dp</dimen>
+    <dimen name="content_req_ic_text_margin_top">5dp</dimen>
+    <dimen name="content_main_vertical_line">1dp</dimen>
+    <dimen name="content_req_text_margin">15dp</dimen>
+    <dimen name="content_req_address_margin_top">20dp</dimen>
+    <dimen name="content_req_layout_date_margin_top">5dp</dimen>
+    <dimen name="content_req_date_time_text_size">6pt</dimen>
+    <dimen name="content_req_work_time_margin_right">12dp</dimen>
 </resources>
