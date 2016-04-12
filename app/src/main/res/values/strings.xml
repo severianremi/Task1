@@ -26,5 +26,8 @@
     <string name="content_req_address_tv">вул. Б.Короткова, 22, Дніпропетровськ</string>
     <string name="content_req_date_text">Лют. 09, 2016</string>
     <string name="content_req_work_time_text">7 днів</string>
+    <string name="in_work_request_status_tab">В РОБОТІ</string>
+    <string name="done_request_status_tab">ВИКОНАНО</string>
+    <string name="wait_request_status_tab">ОЧІКУЄ</string>
 
 </resources>

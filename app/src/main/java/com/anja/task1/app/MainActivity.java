@@ -1,24 +1,27 @@
 package com.anja.task1.app;
 
 import android.app.FragmentTransaction;
-import android.support.design.internal.NavigationMenu;
-import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +31,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     @BindString(R.string.nav_footer_text)
     String navFooterText;
+    @BindString(R.string.in_work_request_status_tab)
+    String inWorkTabText;
+    @BindString(R.string.done_request_status_tab)
+    String doneTabText;
+    @BindString(R.string.wait_request_status_tab)
+    String waitTabText;
+    @Bind(R.id.request_status_vp)
+    ViewPager viewPager;
+    @Bind(R.id.request_status_tab_host)
+    MaterialTabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +55,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        InWorkAndDoneFragment f = new InWorkAndDoneFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, f).commit();
+        RequestStatusFragmentPagerAdapter adapter = new RequestStatusFragmentPagerAdapter(
+                getSupportFragmentManager(),
+                new String[]{inWorkTabText, doneTabText, waitTabText});
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+               tabHost.setSelectedNavigationItem(position);
+            }
+        });
+        for (int i = 0; i < adapter.getCount(); i++) {
+            tabHost.addTab(
+                    tabHost.newTab()
+                            .setText(adapter.getPageTitle(i))
+                            .setTabListener(new MaterialTabListener() {
+                                @Override
+                                public void onTabSelected(MaterialTab materialTab) {
+                                    viewPager.setCurrentItem(materialTab.getPosition());
+                                }
+
+                                @Override
+                                public void onTabReselected(MaterialTab materialTab) {
+
+                                }
+
+                                @Override
+                                public void onTabUnselected(MaterialTab materialTab) {
+
+                                }
+                            })
+            );
+        }
 
     }
 
@@ -109,5 +153,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter {
+
+        String[] mTabNames;
+        InWorkAndDoneFragment f = new InWorkAndDoneFragment();
+
+        public RequestStatusFragmentPagerAdapter(FragmentManager fm, String[] tabNames) {
+            super(fm);
+            mTabNames = tabNames;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTabNames[position];
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return new InWorkAndDoneFragment();
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
     }
 }
