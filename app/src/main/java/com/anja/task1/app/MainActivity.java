@@ -172,6 +172,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public Fragment getItem(int position) {
+            if(position == 2 ){
+                return new WaitFragment();
+            }
             return new InWorkAndDoneFragment();
         }
 
