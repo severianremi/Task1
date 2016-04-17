@@ -9,7 +9,7 @@
              app:layout_behavior="@string/appbar_scrolling_view_behavior"
              tools:context=".MainActivity"
              tools:showIn="@layout/app_bar_main">
-    <View style="@style/ActionBarHorizontalLineStyle"/>
+
     <it.neokree.materialtabs.MaterialTabHost
         android:id="@+id/request_status_tab_host"
         android:layout_width="match_parent"

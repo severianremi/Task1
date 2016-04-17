@@ -7,84 +7,87 @@
               android:orientation="horizontal">
 
 
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <ImageView android:id="@+id/request_icon"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_req"
+                   android:layout_marginLeft="29dp"
+                   android:layout_marginTop="21dp"
+        />
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:orientation="vertical"
-                      android:layout_marginRight="@dimen/content_ic_layout_margin_right"
-                      android:layout_marginLeft="@dimen/content_ic_layout_margin"
-                      android:layout_marginTop="@dimen/content_ic_layout_top"
-                      android:layout_marginBottom="@dimen/content_ic_layout_margin"
-        >
-            <ImageView android:id="@+id/req_ic_iv"
-                       android:layout_width="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_gravity="center"
+                      android:layout_marginTop="@dimen/content_req_ic_margin_top">
+            <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:src="@drawable/ic_req"
-                       android:layout_gravity="center"/>
-            <LinearLayout android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal"
-                          android:layout_gravity="center"
-                          android:layout_marginTop="@dimen/content_req_ic_margin_top">
-                <ImageView android:id="@+id/content_like_ic_iv"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:src="@drawable/ic_req"
-                           android:layout_marginRight="@dimen/content_req_ic_margin_right"/>
-                <TextView android:id="@+id/content_like_ic_tv"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/content_req_ic_text"
-                          android:layout_marginTop="@dimen/content_req_ic_text_margin_top"
-                          android:textColor="@color/content_req_ic_text_color"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-                android:layout_width="@dimen/content_main_vertical_line"
-                android:layout_height="fill_parent"
-                android:background="@color/content_req_vertical_line_color"/>
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical"
-                      android:layout_marginLeft="@dimen/content_req_text_margin"
-                      android:layout_marginTop="@dimen/content_req_text_margin">
-            <TextView android:id="@+id/content_req_title_tv"
+                       android:src="@drawable/ic_likes"
+                       android:layout_marginRight="@dimen/content_req_ic_margin_right"
+                       android:layout_marginLeft="20dp"
+                       android:layout_marginBottom="16dp"/>
+            <TextView android:id="@+id/request_likes"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="@string/content_req_title_text"
-                      android:textColor="@color/content_req_title_color"
-            />
-            <TextView android:id="@+id/content_req_address_tv"
+                      android:text="@string/content_req_ic_text"
+                      android:layout_marginTop="@dimen/content_req_ic_text_margin_top"
+                      android:textColor="@color/content_req_ic_text_color"
+                      android:textSize="14sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+            android:layout_width="@dimen/content_main_vertical_line"
+            android:layout_height="fill_parent"
+            android:background="@color/content_req_vertical_line_color"
+            android:layout_marginLeft="17dp"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_margin="@dimen/content_req_text_margin">
+        <TextView android:id="@+id/request_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/content_req_title_text"
+                  android:singleLine="true"
+                  android:ellipsize="end"
+                  android:textColor="@color/content_req_title_color"
+                  android:textSize="16sp"
+        />
+        <TextView android:id="@+id/request_address"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/content_req_address_tv"
+                  android:singleLine="true"
+                  android:ellipsize="end"
+                  android:layout_marginTop="@dimen/content_req_address_margin_top"
+                  android:textColor="@color/content_req_address_color"
+                  android:textSize="@dimen/content_req_address_text_size"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="@dimen/content_req_layout_date_margin_top">
+            <TextView android:id="@+id/request_create_date"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="@string/content_req_address_tv"
-                      android:singleLine="true"
-                      android:ellipsize="end"
-                      android:layout_marginTop="@dimen/content_req_address_margin_top"
-                      android:textColor="@color/content_req_address_color"/>
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:orientation="horizontal"
-                          android:layout_marginTop="@dimen/content_req_layout_date_margin_top">
-                <TextView android:id="@+id/content_req_date_tv"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/content_req_date_text"
-                          android:layout_weight="1"
-                          android:textColor="@color/content_req_date_time_text_color"
-                          android:textStyle="bold"
-                          android:textSize="@dimen/content_req_date_time_text_size"/>
-                <TextView android:id="@+id/content_req_work_time_tv"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/content_req_work_time_text"
-                          android:gravity="right"
-                          android:layout_weight="1"
-                          android:layout_marginRight="@dimen/content_req_work_time_margin_right"
-                          android:textColor="@color/content_req_date_time_text_color"
-                          android:textStyle="bold"
-                          android:textSize="@dimen/content_req_date_time_text_size"/>
-
-            </LinearLayout>
+                      android:text="@string/content_req_date_text"
+                      android:layout_weight="1"
+                      android:textColor="@color/content_req_date_time_text_color"
+                      android:textStyle="bold"
+                      android:textSize="@dimen/content_req_date_time_text_size"/>
+            <TextView android:id="@+id/request_days"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/content_req_work_time_text"
+                      android:gravity="right"
+                      android:layout_weight="1"
+                      android:layout_gravity="left"
+                      android:textColor="@color/content_req_date_time_text_color"
+                      android:textStyle="bold"
+                      android:textSize="@dimen/content_req_date_time_text_size"/>
         </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

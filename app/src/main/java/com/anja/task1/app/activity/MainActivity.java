@@ -1,10 +1,9 @@
-package com.anja.task1.app;
+package com.anja.task1.app.activity;
 
 import android.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -19,11 +18,15 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
+import com.anja.task1.app.R;
+import com.anja.task1.app.fragment.InWorkOrDoneFragment;
+import com.anja.task1.app.fragment.WaitFragment;
+import com.software.shell.fab.ActionButton;
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     @Bind(R.id.nav_footer)
     TextView navFooterView;
@@ -41,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ViewPager viewPager;
     @Bind(R.id.request_status_tab_host)
     MaterialTabHost tabHost;
+    @Bind(R.id.fab)
+    ActionButton fab;
+
+    public ActionButton getFab() {
+        return fab;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         String[] mTabNames;
-        InWorkAndDoneFragment f = new InWorkAndDoneFragment();
 
         public RequestStatusFragmentPagerAdapter(FragmentManager fm, String[] tabNames) {
             super(fm);
@@ -172,10 +180,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 2 ){
-                return new WaitFragment();
+            switch (position) {
+                case 0: {
+                    InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, InWorkOrDoneFragment.IN_WORK);
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
+                case 1: {
+                    InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, InWorkOrDoneFragment.DONE);
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
+                case 2:
+                    return new WaitFragment();
+                default:
+                    return null;
             }
-            return new InWorkAndDoneFragment();
         }
 
         @Override

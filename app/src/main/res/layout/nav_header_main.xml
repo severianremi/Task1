@@ -20,6 +20,4 @@
         android:textSize="@dimen/nav_header_text_size"
         android:textColor="@color/nav_header_text_color"
         android:textStyle="bold"/>
-
-
 </LinearLayout>

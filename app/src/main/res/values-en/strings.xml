@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CE-1257218</string>
+    <string name="selected_request_activity_title">Request</string>
 
     <string name="action_settings">Settings</string>
     <string name="pageTitle">Municipal economy</string>
