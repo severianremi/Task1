@@ -12,8 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.BindString;
@@ -26,7 +28,7 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     @Bind(R.id.nav_footer)
     TextView navFooterView;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     MaterialTabHost tabHost;
     @Bind(R.id.fab)
     ActionButton fab;
+    @Bind(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     public ActionButton getFab() {
         return fab;
@@ -62,7 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navFooterView.setText(Html.fromHtml(navFooterText));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(this);
 
         RequestStatusFragmentPagerAdapter adapter = new RequestStatusFragmentPagerAdapter(
                 getSupportFragmentManager(),
@@ -124,11 +130,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -162,6 +163,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        drawerLayout.openDrawer(navigationView);
     }
 
     private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter {

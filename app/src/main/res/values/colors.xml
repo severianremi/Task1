@@ -8,7 +8,7 @@
     <color name="status_bar_color_dark_blue">#446389</color>
     <color name="content_background_color">#ebebeb</color>
     <color name="border_line_color">@android:color/darker_gray</color>
-    <color name="content_req_vertical_line_color">#000000</color>
+    <color name="content_req_vertical_line_color">#fafafa</color>
     <color name="nav_header_text_color">#ccd8e6</color>
     <color name="nav_footer_text_color">#373737</color>
     <color name="request_item_background_color">#ffffff</color>

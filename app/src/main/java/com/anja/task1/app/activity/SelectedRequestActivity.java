@@ -16,13 +16,13 @@ import butterknife.ButterKnife;
 import com.anja.task1.app.DataModelApplication;
 import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
+import com.anja.task1.app.util.DateConverter;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 
 public class SelectedRequestActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("dd MM yyyy");
     private DataModelApplication mDataModel;
     private RequestImageRecycleViewAdapter mImageAdapter;
 
@@ -73,9 +73,9 @@ public class SelectedRequestActivity extends AppCompatActivity implements View.O
         requestTitle.setText(request.getTitle());
         String status = getResources().getString(request.getStatus().getTitleId());
         requestStatus.setText(status);
-        requestCreateDate.setText(DATE_TIME_FORMATTER.print(request.getCreateDate()));
-        requestRegisterDate.setText(DATE_TIME_FORMATTER.print(request.getRegisterDate()));
-        requestDeadlineDate.setText(DATE_TIME_FORMATTER.print(request.getDeadlineDate()));
+        requestCreateDate.setText(DateConverter.toSelectedRequestFormat(request.getCreateDate()));
+        requestRegisterDate.setText(DateConverter.toSelectedRequestFormat(request.getRegisterDate()));
+        requestDeadlineDate.setText(DateConverter.toSelectedRequestFormat(request.getDeadlineDate()));
         requestResponsible.setText(request.getResponsible());
         requestText.setText(request.getText());
         mImageAdapter.setImages(request.getImages());

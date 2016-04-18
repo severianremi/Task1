@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -16,6 +17,7 @@ import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
 import com.anja.task1.app.activity.MainActivity;
 import com.anja.task1.app.activity.SelectedRequestActivity;
+import com.anja.task1.app.util.DateConverter;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -25,7 +27,6 @@ public class InWorkOrDoneRecycleViewAdapter
         extends RecyclerView.Adapter<InWorkOrDoneRecycleViewAdapter.InWorkOrDoneViewHolder>
         implements View.OnClickListener{
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("dd MM yyyy");
     private List<Request> mRequests;
     private RecyclerView mRecyclerView;
     private DataModelApplication mDataModel;
@@ -62,7 +63,7 @@ public class InWorkOrDoneRecycleViewAdapter
         holder.requestLikes.setText(String.valueOf(request.getLikes()));
         holder.requestTitle.setText(request.getTitle());
         holder.requestAddress.setText(request.getAddress());
-        holder.requestCreateDate.setText(DATE_TIME_FORMATTER.print(request.getCreateDate()));
+        holder.requestCreateDate.setText(DateConverter.toListItemFormat(request.getCreateDate()));
         holder.requestDays.setText(request.getDays());
     }
 
@@ -95,12 +96,12 @@ public class InWorkOrDoneRecycleViewAdapter
         @Bind(R.id.request_days)
         TextView requestDays;
 
-        private LinearLayout mRequestItem;
+        private RelativeLayout mRequestItem;
 
         public InWorkOrDoneViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            mRequestItem = (LinearLayout) itemView;
+            mRequestItem = (RelativeLayout) itemView;
         }
 
 

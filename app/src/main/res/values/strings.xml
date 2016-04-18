@@ -14,7 +14,7 @@
     <string name="date_resp_text">Дніпропетровський МВК ()</string>
     <string name="content_task">Открытый люк (возле рекламного щита), район поворота 18 и 19 трамваев на проспект Мира с
         Донецкого шоссе</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Всі звернення</string>
     <string name="action_settings">Settings</string>
     <string name="all_request_item">Всі звернення</string>
     <string name="request_on_map_item">Звернення на мапі</string>

@@ -18,7 +18,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="nav_header_text_size">14pt</dimen>
     <dimen name="nav_footer_margin">25dp</dimen>
-    <dimen name="content_main_layout_margin">8dp</dimen>
+    <dimen name="content_main_layout_padding">8dp</dimen>
+    <dimen name="content_main_layout_margin_top_bottom">4dp</dimen>
     <dimen name="content_ic_layout_margin_right">30dp</dimen>
     <dimen name="content_ic_layout_margin">10dp</dimen>
     <dimen name="content_ic_layout_top">15dp</dimen>

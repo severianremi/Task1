@@ -13,6 +13,7 @@ import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
 import com.anja.task1.app.activity.MainActivity;
 import com.anja.task1.app.activity.SelectedRequestActivity;
+import com.anja.task1.app.util.DateConverter;
 import com.software.shell.fab.ActionButton;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -24,7 +25,6 @@ import java.util.List;
  */
 public class WaitFragment extends Fragment implements AbsListView.OnScrollListener{
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("dd MM yyyy");
     private ActionButton mFab;
     private DataModelApplication mDataModel;
     private WaitFragmentListViewAdapter mAdapter = new WaitFragmentListViewAdapter();
@@ -110,8 +110,8 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
             ((TextView) v.findViewById(R.id.request_likes)).setText(String.valueOf(request.getLikes()));
             ((TextView) v.findViewById(R.id.request_title)).setText(request.getTitle());
             ((TextView) v.findViewById(R.id.request_address)).setText(request.getAddress());
-            ((TextView) v.findViewById(R.id.request_create_date)).setText(DATE_TIME_FORMATTER
-                    .print(request.getCreateDate()));
+            ((TextView) v.findViewById(R.id.request_create_date))
+                    .setText(DateConverter.toListItemFormat(request.getCreateDate()));
             ((TextView) v.findViewById(R.id.request_days)).setText(request.getDays());
             return v;
         }
