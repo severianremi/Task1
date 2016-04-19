@@ -32,7 +32,10 @@ public class RandomRequestFactory {
     private List<Integer> mIcons = Arrays.asList(
             R.drawable.ic_build,
             R.drawable.ic_municipal_economy,
-            R.drawable.ic_requst);
+            R.drawable.ic_requst,
+            R.drawable.ic_geothermal,
+            R.drawable.ic_oil_rig,
+            R.drawable.ic_reuse);
 
     private List<String> mResponsible = Arrays.asList(
             "Дніпропетровський МВК ()",
