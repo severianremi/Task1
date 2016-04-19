@@ -33,5 +33,6 @@
     <string name="in_work_request_status">В роботі</string>
     <string name="done_request_status">Виконано</string>
     <string name="wait_request_status">Очікує</string>
+    <string name="app_name">Task2</string>
 
 </resources>

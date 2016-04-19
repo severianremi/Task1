@@ -16,4 +16,11 @@
     <color name="content_req_title_color">#444444</color>
     <color name="content_req_address_color">#a9a9a9</color>
     <color name="content_req_date_time_text_color">#aeaeae</color>
+    <color name="nav_background">#fafafa</color>
+    <color name="fab_orange">#ff9c26</color>
+    <color name="content_main_tab_color">#FFFFFF</color>
+    <color name="content_main_tab_accent_color">#e5ebf2</color>
+    <color name="main_activity_gradient_start_color">#5495ba</color>
+    <color name="main_activity_gradient_center_color">#45b3c3</color>
+    <color name="main_activity_gradient_end_color">#557cac</color>
 </resources>

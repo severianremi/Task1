@@ -13,10 +13,10 @@
     <it.neokree.materialtabs.MaterialTabHost
         android:id="@+id/request_status_tab_host"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:textColor="#FFFFFF"
+        android:layout_height="@dimen/content_main_tab_height"
+        app:textColor="@color/content_main_tab_color"
         app:primaryColor="@color/actionbar_color_blue"
-        app:accentColor="#e5ebf2" />
+        app:accentColor="@color/content_main_tab_accent_color" />
     <android.support.v4.view.ViewPager
             android:id="@+id/request_status_vp"
             android:layout_width="match_parent"

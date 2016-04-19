@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -15,11 +14,8 @@ import butterknife.ButterKnife;
 import com.anja.task1.app.DataModelApplication;
 import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
-import com.anja.task1.app.activity.MainActivity;
 import com.anja.task1.app.activity.SelectedRequestActivity;
 import com.anja.task1.app.util.DateConverter;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
 

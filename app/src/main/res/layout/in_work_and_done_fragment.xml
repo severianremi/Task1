@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/content_main_layout_padding"
-                android:paddingRight="@dimen/content_main_layout_padding"
-                android:paddingTop="@dimen/content_main_layout_padding">
+                style="@style/AllRequestFragment">
 
     <android.support.v7.widget.RecyclerView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/in_work_or_done_rv"

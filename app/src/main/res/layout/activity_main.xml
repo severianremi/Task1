@@ -3,11 +3,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start"
-        android:background="@drawable/main_activity_gradient_background">
+        style="@style/MainContainer"
+        tools:openDrawer="start">
 
     <include
             layout="@layout/app_bar_main"
@@ -26,8 +23,8 @@
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer"
-            android:background="#fafafa"
-    >
+            android:background="@color/nav_background">
+
         <TextView android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:gravity="bottom"
@@ -35,7 +32,7 @@
                   android:layout_marginLeft="@dimen/nav_footer_margin"
                   android:text="@string/nav_footer_text"
                   android:textColor="@color/nav_footer_text_color"
-                  android:textSize="6pt"
+                  android:textSize="@dimen/nav_footer_text_size"
                   android:id="@+id/nav_footer"/>
     </android.support.design.widget.NavigationView>
 

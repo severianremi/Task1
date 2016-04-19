@@ -1,7 +1,6 @@
 package com.anja.task1.app.fragment;
 
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,8 +24,6 @@ public class InWorkOrDoneFragment extends Fragment {
 
     private DataModelApplication mDataModel;
     private InWorkOrDoneRecycleViewAdapter mAdapter = new InWorkOrDoneRecycleViewAdapter();
-    private int mType;
-
 
 
     @Override
@@ -49,9 +46,10 @@ public class InWorkOrDoneFragment extends Fragment {
                 }
             }
         });
+        mDataModel = (DataModelApplication) getActivity().getApplication();
+        obtainDate();
         recyclerViewItems.setAdapter(mAdapter);
         mAdapter.setRecycleView(recyclerViewItems);
-        mDataModel = (DataModelApplication) getActivity().getApplication();
         mAdapter.setDataModel(mDataModel);
         mAdapter.setActivity(getActivity());
         return view;
@@ -60,10 +58,14 @@ public class InWorkOrDoneFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mType = getArguments().getInt(TYPE_KEY);
-        if (mType == IN_WORK){
+        obtainDate();
+    }
+
+    private void obtainDate() {
+        int type = getArguments().getInt(TYPE_KEY);
+        if (type == IN_WORK){
             mAdapter.setRequests(mDataModel.getInWorkRequests());
-        }else if (mType == DONE){
+        }else if (type == DONE){
             mAdapter.setRequests(mDataModel.getDoneRequests());
         }
     }

@@ -1,9 +1,9 @@
 package com.anja.task1.app.activity;
 
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -17,20 +17,16 @@ import com.anja.task1.app.DataModelApplication;
 import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
 import com.anja.task1.app.util.DateConverter;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 
 public class SelectedRequestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DataModelApplication mDataModel;
     private RequestImageRecycleViewAdapter mImageAdapter;
-
     @Bind(R.id.selected_request_main_sv)
     ViewGroup mainSv;
     @Bind(R.id.selected_request_images_rv)
     RecyclerView imagesRv;
-
     @Bind(R.id.selected_request_title)
     TextView requestTitle;
     @Bind(R.id.selected_request_status)

@@ -10,7 +10,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RequestImageRecycleViewAdapter extends RecyclerView.Adapter<RequestImageRecycleViewAdapter.TaskImageViewHolder> {
+public class RequestImageRecycleViewAdapter
+        extends RecyclerView.Adapter<RequestImageRecycleViewAdapter.TaskImageViewHolder> {
 
     private List<Integer> mImages;
 

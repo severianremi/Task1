@@ -15,4 +15,11 @@
     <string name="all_request_item">All request</string>
     <string name="request_on_map_item">Request on map</string>
     <string name="login_item">Sign in</string>
+    <string name="done_request_status">Done</string>
+    <string name="done_request_status_tab">DONE</string>
+    <string name="in_work_request_status">In work</string>
+    <string name="in_work_request_status_tab">IN WORK</string>
+    <string name="title_activity_main">All requests</string>
+    <string name="wait_request_status">Wait</string>
+    <string name="wait_request_status_tab">WAIT</string>
 </resources>

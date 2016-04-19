@@ -56,4 +56,19 @@
         <item name="android:layout_marginLeft">16dp</item>
     </style>
 
+    <style name="MainContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AllRequestFragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">@dimen/content_main_layout_padding</item>
+        <item name="android:paddingTop">@dimen/content_main_layout_padding</item>
+        <item name="android:paddingLeft">@dimen/content_main_layout_padding</item>
+        <item name="android:background">@drawable/main_activity_gradient_background</item>
+    </style>
+
 </resources>

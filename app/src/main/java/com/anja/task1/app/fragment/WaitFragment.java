@@ -15,8 +15,6 @@ import com.anja.task1.app.activity.MainActivity;
 import com.anja.task1.app.activity.SelectedRequestActivity;
 import com.anja.task1.app.util.DateConverter;
 import com.software.shell.fab.ActionButton;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
         mDataModel = (DataModelApplication) getActivity().getApplication();
         mAdapter.setRequests(mDataModel.getWaitRequests());
         mAdapter.setActivity(getActivity());
-        mAdapter.setListView(listView);
+        mAdapter.setOnItemClickForListView(listView);
         listView.setAdapter(mAdapter);
 
         mFab = ((MainActivity) getActivity()).getFab();
@@ -68,13 +66,11 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
 
     private class WaitFragmentListViewAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
-        private ListView mListView;
         private Activity mActivity;
         private List<Request> mRequests;
 
-        public void setListView(ListView mListView) {
-            this.mListView = mListView;
-            mListView.setOnItemClickListener(this);
+        public void setOnItemClickForListView(ListView listView) {
+            listView.setOnItemClickListener(this);
         }
 
         public void setActivity(Activity mActivity) {

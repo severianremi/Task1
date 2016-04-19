@@ -31,5 +31,19 @@
     <dimen name="content_req_address_margin_top">6dp</dimen>
     <dimen name="content_req_layout_date_margin_top">16dp</dimen>
     <dimen name="content_req_date_time_text_size">14sp</dimen>
-    <dimen name="content_req_address_text_size">14sp</dimen>
+    <dimen name="request_item_text_size">14sp</dimen>
+    <dimen name="request_item_margin_bottom">16dp</dimen>
+    <dimen name="request_item_text_title">16sp</dimen>
+    <dimen name="request_item_part1_width">80dp</dimen>
+    <dimen name="request_item_layout_height">126dp</dimen>
+    <dimen name="request_item_ic_size">30dp</dimen>
+    <dimen name="request_item_ic_margin_top">21dp</dimen>
+    <dimen name="request_item_ic_like_size">18dp</dimen>
+    <dimen name="request_item_ic_like_margin_left">20dp</dimen>
+    <dimen name="request_item_text_like_margin_right">17dp</dimen>
+    <dimen name="request_item_title_height">40dp</dimen>
+    <dimen name="request_item_address_height">22dp</dimen>
+    <dimen name="request_item_address_margin_top">10dp</dimen>
+    <dimen name="nav_footer_text_size">14sp</dimen>
+    <dimen name="content_main_tab_height">48dp</dimen>
 </resources>
