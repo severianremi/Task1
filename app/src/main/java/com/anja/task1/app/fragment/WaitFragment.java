@@ -46,7 +46,7 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-        if(scrollState == SCROLL_STATE_IDLE){
+        if(scrollState == SCROLL_STATE_IDLE){ //[Comment] User ternar operator
             mFab.show();
         } else {
             mFab.hide();
@@ -64,7 +64,7 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
 
 
 
-    private class WaitFragmentListViewAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
+    private class WaitFragmentListViewAdapter extends BaseAdapter implements AdapterView.OnItemClickListener { //[Comment] Should be external
 
         private Activity mActivity;
         private List<Request> mRequests;
@@ -99,10 +99,10 @@ public class WaitFragment extends Fragment implements AbsListView.OnScrollListen
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Request request = mRequests.get(position);
+            Request request = mRequests.get(position); //[Comment] Bad performance. Use ViewHolder for listview
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.request_item, parent, false);
             ((ImageView) v.findViewById(R.id.request_icon)).setImageDrawable(getResources()
-                    .getDrawable(request.getIcon()));
+                    .getDrawable(request.getIcon())); //[Comment] Deprecated
             ((TextView) v.findViewById(R.id.request_likes)).setText(String.valueOf(request.getLikes()));
             ((TextView) v.findViewById(R.id.request_title)).setText(request.getTitle());
             ((TextView) v.findViewById(R.id.request_address)).setText(request.getAddress());

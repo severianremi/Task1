@@ -23,7 +23,7 @@ public class RequestImageRecycleViewAdapter
     }
 
     public void setImages(List<Integer> mImages) {
-        this.mImages = mImages;
+        this.mImages = mImages; //[Comment] Unnecessary this
         notifyDataSetChanged();
     }
 

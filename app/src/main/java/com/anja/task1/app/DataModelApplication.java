@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Anna on 16.04.2016.
  */
-public class DataModelApplication extends Application {
+public class DataModelApplication extends Application { //[Comment] Unused Setters
 
     private List<Request> mInWorkRequests;
     private List<Request> mDoneRequests;

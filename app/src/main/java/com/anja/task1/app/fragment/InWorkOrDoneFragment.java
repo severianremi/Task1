@@ -22,7 +22,7 @@ public class InWorkOrDoneFragment extends Fragment {
     public static final int IN_WORK = 0;
     public static final int DONE = 1;
 
-    private DataModelApplication mDataModel;
+    private DataModelApplication mDataModel; //[Comment] You don't need this object. Use static getters in Application class. For example App.getDataList()
     private InWorkOrDoneRecycleViewAdapter mAdapter = new InWorkOrDoneRecycleViewAdapter();
 
 
@@ -39,7 +39,7 @@ public class InWorkOrDoneFragment extends Fragment {
         recyclerViewItems.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){ //[Comment] newState == RecyclerView.SCROLL_STATE_IDLE ? fab.show() : fab.hide();
                     fab.show();
                 } else {
                     fab.hide();
@@ -49,7 +49,7 @@ public class InWorkOrDoneFragment extends Fragment {
         mDataModel = (DataModelApplication) getActivity().getApplication();
         obtainDate();
         recyclerViewItems.setAdapter(mAdapter);
-        mAdapter.setRecycleView(recyclerViewItems);
+        mAdapter.setRecycleView(recyclerViewItems); //[Comment] Adapter shouldn't know about recyclerView. Use custom interface instead
         mAdapter.setDataModel(mDataModel);
         mAdapter.setActivity(getActivity());
         return view;

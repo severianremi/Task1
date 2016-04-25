@@ -74,7 +74,7 @@ public class InWorkOrDoneRecycleViewAdapter
         Request selectedRequest = mRequests.get(itemPosition);
         mDataModel.setSelectedRequest(selectedRequest);
         Intent intent = new Intent(v.getContext(), SelectedRequestActivity.class);
-        mActivity.startActivity(intent);
+        mActivity.startActivity(intent); //[Comment] Don't start other activity from adapter
     }
 
     public static class InWorkOrDoneViewHolder extends RecyclerView.ViewHolder {

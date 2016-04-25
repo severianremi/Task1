@@ -40,7 +40,7 @@ public class SelectedRequestActivity extends AppCompatActivity implements View.O
     @Bind(R.id.selected_request_responsible)
     TextView requestResponsible;
     @Bind(R.id.selected_request_text)
-    TextView requestText;
+    TextView requestText; //[Comment] Wrong names
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

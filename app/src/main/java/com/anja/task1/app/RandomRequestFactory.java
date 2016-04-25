@@ -19,7 +19,7 @@ public class RandomRequestFactory {
             "Благоустрій та будівництво",
             "Демонтаж інших об'єктів, що входять до переліку",
             "Ремонт та обслуговування",
-            "Прибирання та санітарний стан території");
+            "Прибирання та санітарний стан території"); //[Comment] Use string-array
 
     private List<Integer> mImages = Arrays.asList(
             R.drawable.manhole,

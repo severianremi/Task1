@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
         drawerLayout.openDrawer(navigationView);
     }
 
-    private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter {
+    private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter { //[Comment] Should be external
 
         private String[] mTabNames;
 
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
                     InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
                     Bundle bundle = new Bundle();
                     bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, InWorkOrDoneFragment.IN_WORK);
-                    fragment.setArguments(bundle);
+                    fragment.setArguments(bundle); //[Comment] Copy/Paste code. Create please one method
                     return fragment;
                 }
                 case 1: {
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity
                     fragment.setArguments(bundle);
                     return fragment;
                 }
-                case 2:
+                case 2: //[Comment] Magic numbers
                     return new WaitFragment();
                 default:
                     return null;
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 3;
+            return 3; //[Comment] Magic numbers
         }
     }
 }
