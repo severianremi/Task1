@@ -22,8 +22,8 @@ public class RequestImageRecycleViewAdapter
         return new TaskImageViewHolder(view);
     }
 
-    public void setImages(List<Integer> mImages) {
-        this.mImages = mImages;
+    public void setImages(List<Integer> images) {
+        mImages = images;
         notifyDataSetChanged();
     }
 

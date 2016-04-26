@@ -21,59 +21,57 @@ import com.anja.task1.app.util.DateConverter;
 
 public class SelectedRequestActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DataModelApplication mDataModel;
     private RequestImageRecycleViewAdapter mImageAdapter;
     @Bind(R.id.selected_request_main_sv)
-    ViewGroup mainSv;
+    ViewGroup mMainSv;
     @Bind(R.id.selected_request_images_rv)
-    RecyclerView imagesRv;
+    RecyclerView mImagesRv;
     @Bind(R.id.selected_request_title)
-    TextView requestTitle;
+    TextView mRequestTitle;
     @Bind(R.id.selected_request_status)
-    TextView requestStatus;
+    TextView mRequestStatus;
     @Bind(R.id.selected_request_create_date)
-    TextView requestCreateDate;
+    TextView mRequestCreateDate;
     @Bind(R.id.selected_request_register_date)
-    TextView requestRegisterDate;
+    TextView mRequestRegisterDate;
     @Bind(R.id.selected_request_deadline_date)
-    TextView requestDeadlineDate;
+    TextView mRequestDeadlineDate;
     @Bind(R.id.selected_request_responsible)
-    TextView requestResponsible;
+    TextView mRequestResponsible;
     @Bind(R.id.selected_request_text)
-    TextView requestText;
+    TextView mRequestText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_request);
-        mDataModel = (DataModelApplication) getApplication();
         ButterKnife.bind(this);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        setOnClickListenerForChildren(mainSv);
+        setOnClickListenerForChildren(mMainSv);
 
         LinearLayoutManager lm
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        imagesRv.setLayoutManager(lm);
+        mImagesRv.setLayoutManager(lm);
         mImageAdapter = new RequestImageRecycleViewAdapter();
-        imagesRv.setAdapter(mImageAdapter);
+        mImagesRv.setAdapter(mImageAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Request request = mDataModel.getSelectedRequest();
-        requestTitle.setText(request.getTitle());
+        Request request = DataModelApplication.getSelectedRequest();
+        mRequestTitle.setText(request.getTitle());
         String status = getResources().getString(request.getStatus().getTitleId());
-        requestStatus.setText(status);
-        requestCreateDate.setText(DateConverter.toSelectedRequestFormat(request.getCreateDate()));
-        requestRegisterDate.setText(DateConverter.toSelectedRequestFormat(request.getRegisterDate()));
-        requestDeadlineDate.setText(DateConverter.toSelectedRequestFormat(request.getDeadlineDate()));
-        requestResponsible.setText(request.getResponsible());
-        requestText.setText(request.getText());
+        mRequestStatus.setText(status);
+        mRequestCreateDate.setText(DateConverter.toSelectedRequestFormat(request.getCreateDate()));
+        mRequestRegisterDate.setText(DateConverter.toSelectedRequestFormat(request.getRegisterDate()));
+        mRequestDeadlineDate.setText(DateConverter.toSelectedRequestFormat(request.getDeadlineDate()));
+        mRequestResponsible.setText(request.getResponsible());
+        mRequestText.setText(request.getText());
         mImageAdapter.setImages(request.getImages());
     }
 

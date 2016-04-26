@@ -11,41 +11,29 @@ import java.util.List;
  */
 public class DataModelApplication extends Application {
 
-    private List<Request> mInWorkRequests;
-    private List<Request> mDoneRequests;
-    private List<Request> mWaitRequests;
-    private Request mSelectedRequest;
+    private static List<Request> sInWorkRequests;
+    private static List<Request> sDoneRequests;
+    private static List<Request> sWaitRequests;
+    private static Request sSelectedRequest;
 
-    public List<Request> getInWorkRequests() {
-        return mInWorkRequests;
+    public static List<Request> getInWorkRequests() {
+        return sInWorkRequests;
     }
 
-    public void setInWorkRequests(List<Request> mInWorkRequests) {
-        this.mInWorkRequests = mInWorkRequests;
+    public static List<Request> getDoneRequests() {
+        return sDoneRequests;
     }
 
-    public List<Request> getDoneRequests() {
-        return mDoneRequests;
+    public static List<Request> getWaitRequests() {
+        return sWaitRequests;
     }
 
-    public void setDoneRequests(List<Request> mDoneRequests) {
-        this.mDoneRequests = mDoneRequests;
+    public static Request getSelectedRequest() {
+        return sSelectedRequest;
     }
 
-    public List<Request> getWaitRequests() {
-        return mWaitRequests;
-    }
-
-    public void setWaitRequests(List<Request> mWaitRequests) {
-        this.mWaitRequests = mWaitRequests;
-    }
-
-    public Request getSelectedRequest() {
-        return mSelectedRequest;
-    }
-
-    public void setSelectedRequest(Request mSelectedRequest) {
-        this.mSelectedRequest = mSelectedRequest;
+    public static void setSelectedRequest(Request selectedRequest) {
+        sSelectedRequest = selectedRequest;
     }
 
     @Override
@@ -56,15 +44,15 @@ public class DataModelApplication extends Application {
     }
 
     private void generateData() {
-        mInWorkRequests = new ArrayList<Request>();
-        mDoneRequests = new ArrayList<Request>();
-        mWaitRequests = new ArrayList<Request>();
+        sInWorkRequests = new ArrayList<Request>();
+        sDoneRequests = new ArrayList<Request>();
+        sWaitRequests = new ArrayList<Request>();
         RandomRequestFactory factory = new RandomRequestFactory();
 
         for(int i = 0; i<10; i++){
-            mInWorkRequests.add(factory.generateRequest(Request.Status.IN_WORK));
-            mDoneRequests.add(factory.generateRequest(Request.Status.DONE));
-            mWaitRequests.add(factory.generateRequest(Request.Status.WAIT));
+            sInWorkRequests.add(factory.generateRequest(Request.Status.IN_WORK));
+            sDoneRequests.add(factory.generateRequest(Request.Status.DONE));
+            sWaitRequests.add(factory.generateRequest(Request.Status.WAIT));
         }
     }
 }

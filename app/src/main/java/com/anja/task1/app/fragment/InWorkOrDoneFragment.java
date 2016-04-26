@@ -1,5 +1,6 @@
 package com.anja.task1.app.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,20 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.anja.task1.app.DataModelApplication;
 import com.anja.task1.app.R;
+import com.anja.task1.app.Request;
 import com.anja.task1.app.activity.MainActivity;
+import com.anja.task1.app.activity.SelectedRequestActivity;
 import com.software.shell.fab.ActionButton;
 
 
 /**
  * Created by Anna on 11.04.2016.
  */
-public class InWorkOrDoneFragment extends Fragment {
+public class InWorkOrDoneFragment extends Fragment implements OnRequestSelectListener {
 
     public static final String TYPE_KEY = "type";
     public static final int IN_WORK = 0;
     public static final int DONE = 1;
 
-    private DataModelApplication mDataModel;
     private InWorkOrDoneRecycleViewAdapter mAdapter = new InWorkOrDoneRecycleViewAdapter();
 
 
@@ -46,12 +48,10 @@ public class InWorkOrDoneFragment extends Fragment {
                 }
             }
         });
-        mDataModel = (DataModelApplication) getActivity().getApplication();
+
         obtainDate();
         recyclerViewItems.setAdapter(mAdapter);
-        mAdapter.setRecycleView(recyclerViewItems);
-        mAdapter.setDataModel(mDataModel);
-        mAdapter.setActivity(getActivity());
+        mAdapter.setOnRequestSelectListener(this);
         return view;
     }
 
@@ -64,9 +64,16 @@ public class InWorkOrDoneFragment extends Fragment {
     private void obtainDate() {
         int type = getArguments().getInt(TYPE_KEY);
         if (type == IN_WORK){
-            mAdapter.setRequests(mDataModel.getInWorkRequests());
+            mAdapter.setRequests(DataModelApplication.getInWorkRequests());
         }else if (type == DONE){
-            mAdapter.setRequests(mDataModel.getDoneRequests());
+            mAdapter.setRequests(DataModelApplication.getDoneRequests());
         }
+    }
+
+    @Override
+    public void onRequestSelect(Request selectedRequest) {
+        DataModelApplication.setSelectedRequest(selectedRequest);
+        Intent intent = new Intent(getContext(), SelectedRequestActivity.class);
+        getActivity().startActivity(intent);
     }
 }

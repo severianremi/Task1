@@ -3,7 +3,6 @@ package com.anja.task1.app;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -14,59 +13,59 @@ public class RandomRequestFactory {
 
     private Random mRandom = new Random();
 
-    private List<String> mTitles = Arrays.asList(
+    private String[] mTitles = {
             "Комунальне господарство",
             "Благоустрій та будівництво",
             "Демонтаж інших об'єктів, що входять до переліку",
             "Ремонт та обслуговування",
-            "Прибирання та санітарний стан території");
+            "Прибирання та санітарний стан території"};
 
-    private List<Integer> mImages = Arrays.asList(
+    private int[] mImages = {
             R.drawable.manhole,
             R.drawable.open_manhole,
             R.drawable.trams,
             R.drawable.donetsk_street,
             R.drawable.luke,
-            R.drawable.open_luke);
+            R.drawable.open_luke};
 
-    private List<Integer> mIcons = Arrays.asList(
+    private int[] mIcons = {
             R.drawable.ic_build,
             R.drawable.ic_municipal_economy,
             R.drawable.ic_requst,
             R.drawable.ic_geothermal,
             R.drawable.ic_oil_rig,
-            R.drawable.ic_reuse);
+            R.drawable.ic_reuse};
 
-    private List<String> mResponsible = Arrays.asList(
+    private String[] mResponsible = {
             "Дніпропетровський МВК ()",
             "Дніпропетровська облдержадміністрація",
-            "ЖКГ Дніпропетровська");
+            "ЖКГ Дніпропетровська"};
 
-    private List<String> mTexts = Arrays.asList(
+    private String[] mTexts = {
             "Открытый люк (возле рекламного щита), район поворота 18 и 19 трамваев на проспект Мира с Донецкого шоссе",
             "Нет заграждений на трамвайной остановке в районе Петровского",
-            "Аварийное состояние дороги на Старом мосту");
+            "Аварийное состояние дороги на Старом мосту"};
 
-    private List<String> mAddresses = Arrays.asList(
+    private String[] mAddresses = {
             "вул. Б.Короткова, 22, Дніпропетровськ",
             "Дніпропетровськ, вул. Олеся Гончара, 10",
-            "Дніпропетровськ, проспект Богдана Хмельницького, 5-А");
+            "Дніпропетровськ, проспект Богдана Хмельницького, 5-А"};
 
 
   public Request generateRequest(Request.Status status){
       Request request = new Request();
       request.setStatus(status);
-      request.setTitle(mTitles.get(mRandom.nextInt(mTitles.size())));
+      request.setTitle(mTitles[mRandom.nextInt(mTitles.length)]);
       List<Integer> randomImages = new ArrayList<Integer>();
       for (int i = 0; i<4; i++) {
-          randomImages.add(mImages.get(mRandom.nextInt(mImages.size())));
+          randomImages.add(mImages[mRandom.nextInt(mImages.length)]);
       }
       request.setImages(randomImages);
-      request.setIcon(mIcons.get(mRandom.nextInt(mIcons.size())));
-      request.setResponsible(mResponsible.get(mRandom.nextInt(mResponsible.size())));
-      request.setText(mTexts.get(mRandom.nextInt(mTexts.size())));
+      request.setIcon(mIcons[mRandom.nextInt(mIcons.length)]);
+      request.setResponsible(mResponsible[mRandom.nextInt(mResponsible.length)]);
+      request.setText(mTexts[mRandom.nextInt(mTexts.length)]);
       request.setLikes(mRandom.nextInt(100));
-      request.setAddress(mAddresses.get(mRandom.nextInt(mAddresses.size())));
+      request.setAddress(mAddresses[mRandom.nextInt(mAddresses.length)]);
       request.setDays((mRandom.nextInt(10)+2)+" днів");
       DateTime randomCreateDate = new DateTime(2016, mRandom.nextInt(12)+1, mRandom.nextInt(29)+1, 0, 0);
       request.setCreateDate(randomCreateDate);

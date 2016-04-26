@@ -2,9 +2,6 @@ package com.anja.task1.app.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,8 +16,6 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import com.anja.task1.app.R;
-import com.anja.task1.app.fragment.InWorkOrDoneFragment;
-import com.anja.task1.app.fragment.WaitFragment;
 import com.software.shell.fab.ActionButton;
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -30,30 +25,30 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     @Bind(R.id.nav_footer)
-    TextView navFooterView;
+    TextView mNavFooterView;
     @Bind(R.id.nav_view)
-    NavigationView navigationView;
+    NavigationView mNavigationView;
     @BindString(R.string.nav_footer_text)
-    String navFooterText;
+    String mNavFooterText;
     @BindString(R.string.in_work_request_status_tab)
-    String inWorkTabText;
+    String mInWorkTabText;
     @BindString(R.string.done_request_status_tab)
-    String doneTabText;
+    String mDoneTabText;
     @BindString(R.string.wait_request_status_tab)
-    String waitTabText;
+    String mWaitTabText;
     @Bind(R.id.request_status_vp)
-    ViewPager viewPager;
+    ViewPager mViewPager;
     @Bind(R.id.request_status_tab_host)
-    MaterialTabHost tabHost;
+    MaterialTabHost mTabHost;
     @Bind(R.id.fab)
-    ActionButton fab;
+    ActionButton mFab;
     @Bind(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    DrawerLayout mDrawerLayout;
     @BindString(R.string.title_activity_main)
-    String activityTitle;
+    String mActivityTitle;
 
     public ActionButton getFab() {
-        return fab;
+        return mFab;
     }
 
     @Override
@@ -61,25 +56,25 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        navigationView.setNavigationItemSelectedListener(this);
-        navFooterView.setText(Html.fromHtml(navFooterText));
+        mNavigationView.setNavigationItemSelectedListener(this);
+        mNavFooterView.setText(Html.fromHtml(mNavFooterText));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menu);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(activityTitle);
+        getSupportActionBar().setTitle(mActivityTitle);
         toolbar.setNavigationOnClickListener(this);
         RequestStatusFragmentPagerAdapter adapter = new RequestStatusFragmentPagerAdapter(
                 getSupportFragmentManager(),
-                new String[]{inWorkTabText, doneTabText, waitTabText});
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                new String[]{mInWorkTabText, mDoneTabText, mWaitTabText});
+        mViewPager.setAdapter(adapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-               tabHost.setSelectedNavigationItem(position);
+               mTabHost.setSelectedNavigationItem(position);
             }
         });
         for (int i = 0; i < adapter.getCount(); i++) {
-            tabHost.addTab(tabHost.newTab()
+            mTabHost.addTab(mTabHost.newTab()
                             .setText(adapter.getPageTitle(i))
                             .setTabListener(createTabListener()));
         }
@@ -89,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         return new MaterialTabListener() {
             @Override
             public void onTabSelected(MaterialTab materialTab) {
-                viewPager.setCurrentItem(materialTab.getPosition());
+                mViewPager.setCurrentItem(materialTab.getPosition());
             }
 
             @Override
@@ -130,50 +125,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
-        drawerLayout.openDrawer(navigationView);
+        mDrawerLayout.openDrawer(mNavigationView);
     }
 
-    private static class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
-        private String[] mTabNames;
-
-        public RequestStatusFragmentPagerAdapter(FragmentManager fm, String[] tabNames) {
-            super(fm);
-            mTabNames = tabNames;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTabNames[position];
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0: {
-                    InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, InWorkOrDoneFragment.IN_WORK);
-                    fragment.setArguments(bundle);
-                    return fragment;
-                }
-                case 1: {
-                    InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, InWorkOrDoneFragment.DONE);
-                    fragment.setArguments(bundle);
-                    return fragment;
-                }
-                case 2:
-                    return new WaitFragment();
-                default:
-                    return null;
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-    }
 }
