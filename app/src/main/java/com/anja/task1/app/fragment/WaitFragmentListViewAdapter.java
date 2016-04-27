@@ -1,5 +1,6 @@
 package com.anja.task1.app.fragment;
 
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,9 @@ public class WaitFragmentListViewAdapter extends BaseAdapter implements AdapterV
             viewHolder = (WaitViewHolder) convertView.getTag();
         }
         Request request = mRequests.get(position);
-        viewHolder.mRequestIcon.setImageDrawable(viewHolder.mRequestItem.getResources().getDrawable(request.getIcon()));
+
+        viewHolder.mRequestIcon.setImageDrawable(ResourcesCompat
+                .getDrawable(viewHolder.mRequestItem.getResources(), request.getIcon(), null));
         viewHolder.mRequestLikes.setText(String.valueOf(request.getLikes()));
         viewHolder.mRequestTitle.setText(request.getTitle());
         viewHolder.mRequestAddress.setText(request.getAddress());

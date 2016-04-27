@@ -1,5 +1,6 @@
 package com.anja.task1.app.fragment;
 
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,8 @@ public class InWorkOrDoneRecycleViewAdapter
     @Override
     public void onBindViewHolder(InWorkOrDoneViewHolder holder, int position) {
         Request request = mRequests.get(position);
-        holder.mRequestIcon.setImageDrawable(holder.mRequestItem.getResources().getDrawable(request.getIcon()));
+        holder.mRequestIcon.setImageDrawable(ResourcesCompat
+                .getDrawable(holder.mRequestItem.getResources(), request.getIcon(), null));
         holder.mRequestLikes.setText(String.valueOf(request.getLikes()));
         holder.mRequestTitle.setText(request.getTitle());
         holder.mRequestAddress.setText(request.getAddress());
