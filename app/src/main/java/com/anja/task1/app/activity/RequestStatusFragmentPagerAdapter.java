@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import com.anja.task1.app.fragment.InWorkOrDoneFragment;
-import com.anja.task1.app.fragment.WaitFragment;
 
 /**
  * Created by Anna on 26.04.2016.
@@ -39,7 +38,7 @@ public class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter
                 return createFragment(InWorkOrDoneFragment.DONE);
             }
             case WAIT_TAB_POSITION:
-                return new WaitFragment();
+                return createFragment(InWorkOrDoneFragment.WAIT);
             default:
                 return null;
         }

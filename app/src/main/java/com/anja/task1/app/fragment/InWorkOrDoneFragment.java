@@ -24,6 +24,7 @@ public class InWorkOrDoneFragment extends Fragment implements OnRequestSelectLis
     public static final String TYPE_KEY = "type";
     public static final int IN_WORK = 0;
     public static final int DONE = 1;
+    public static final int WAIT = 2;
 
     private InWorkOrDoneRecycleViewAdapter mAdapter = new InWorkOrDoneRecycleViewAdapter();
 
@@ -67,6 +68,8 @@ public class InWorkOrDoneFragment extends Fragment implements OnRequestSelectLis
             mAdapter.setRequests(DataModelApplication.getInWorkRequests());
         }else if (type == DONE){
             mAdapter.setRequests(DataModelApplication.getDoneRequests());
+        }else if (type == WAIT){
+            mAdapter.setRequests(DataModelApplication.getWaitRequests());
         }
     }
 
