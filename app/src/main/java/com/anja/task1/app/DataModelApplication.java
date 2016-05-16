@@ -1,6 +1,10 @@
 package com.anja.task1.app;
 
 import android.app.Application;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.util.ArrayList;

@@ -2,6 +2,7 @@ package com.anja.task1.app.fragment;
 
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import butterknife.ButterKnife;
 import com.anja.task1.app.R;
 import com.anja.task1.app.Request;
 import com.anja.task1.app.util.DateConverter;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -48,11 +50,16 @@ public class InWorkOrDoneRecycleViewAdapter
         holder.mRequestAddress.setText(request.getAddress());
         holder.mRequestCreateDate.setText(DateConverter.toListItemFormat(request.getCreateDate()));
         holder.mRequestDays.setText(request.getDays());
+        Log.i("JSON", createJsonRequest(mRequests));
     }
 
     @Override
     public int getItemCount() {
         return mRequests.size();
+    }
+
+    public String createJsonRequest(List<Request> mRequests){
+        return new Gson().toJson(mRequests);
     }
 
 
