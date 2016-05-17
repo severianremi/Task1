@@ -10,6 +10,14 @@ public class Street{
     protected String ru_name;
     private StreetAddress street_type;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Street{" +

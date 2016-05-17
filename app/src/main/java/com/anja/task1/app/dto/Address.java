@@ -14,6 +14,14 @@ public class Address{
     private House house;
     private String flat;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Address{" +

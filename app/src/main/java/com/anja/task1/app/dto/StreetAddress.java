@@ -9,6 +9,14 @@ public class StreetAddress{
     protected String name;
     private String short_name;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "StreetAddress{" +

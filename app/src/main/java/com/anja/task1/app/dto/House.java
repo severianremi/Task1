@@ -8,7 +8,15 @@ public class House {
     private int id;
     private String name;
 
-   @Override
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
     public String toString() {
         return "House{" +
                 "id=" + id +

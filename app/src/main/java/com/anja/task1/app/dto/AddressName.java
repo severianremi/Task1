@@ -9,28 +9,12 @@ public class AddressName {
     protected String name;
     protected String ru_name;
 
-    public String getRu_name() {
-        return ru_name;
-    }
-
-    public void setRu_name(String ru_name) {
-        this.ru_name = ru_name;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
