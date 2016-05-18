@@ -38,10 +38,13 @@ android {
     }
     sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java/'] } }
 }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:design:23.0.1'
@@ -54,4 +57,5 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'com.facebook.android:facebook-android-sdk:4.+'
+    compile 'com.pkmmte.view:circularimageview:1.1'
 }

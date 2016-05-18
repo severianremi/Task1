@@ -50,18 +50,12 @@ public class InWorkOrDoneRecycleViewAdapter
         holder.mRequestAddress.setText(request.getAddress());
         holder.mRequestCreateDate.setText(DateConverter.toListItemFormat(request.getCreateDate()));
         holder.mRequestDays.setText(request.getDays());
-        Log.i("JSON", createJsonRequest(mRequests));
     }
 
     @Override
     public int getItemCount() {
         return mRequests.size();
     }
-
-    public String createJsonRequest(List<Request> mRequests){
-        return new Gson().toJson(mRequests);
-    }
-
 
 
     public static class InWorkOrDoneViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
