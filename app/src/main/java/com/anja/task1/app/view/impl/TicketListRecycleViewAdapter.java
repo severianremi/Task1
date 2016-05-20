@@ -1,29 +1,31 @@
-package com.anja.task1.app.fragment;
+package com.anja.task1.app.view.impl;
 
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
+import com.anja.task1.app.OnRequestSelectListener;
 import com.anja.task1.app.R;
-import com.anja.task1.app.Request;
+import com.anja.task1.app.data.Request;
 import com.anja.task1.app.util.DateConverter;
-import com.google.gson.Gson;
 
 import java.util.List;
 
-public class InWorkOrDoneRecycleViewAdapter
-        extends RecyclerView.Adapter<InWorkOrDoneRecycleViewAdapter.InWorkOrDoneViewHolder> {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class TicketListRecycleViewAdapter
+        extends RecyclerView.Adapter<TicketListRecycleViewAdapter.TicketListViewHolder> {
+
 
     private List<Request> mRequests;
 
-    private  OnRequestSelectListener mOnRequestSelectListener;
+    private OnRequestSelectListener mOnRequestSelectListener;
 
     public void setOnRequestSelectListener(OnRequestSelectListener onRequestSelectListener) {
         mOnRequestSelectListener = onRequestSelectListener;
@@ -35,13 +37,13 @@ public class InWorkOrDoneRecycleViewAdapter
     }
 
     @Override
-    public InWorkOrDoneViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TicketListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.request_item, parent, false);
-        return new InWorkOrDoneViewHolder(view, mRequests, mOnRequestSelectListener);
+        return new TicketListViewHolder(view, mRequests, mOnRequestSelectListener);
     }
 
     @Override
-    public void onBindViewHolder(InWorkOrDoneViewHolder holder, int position) {
+    public void onBindViewHolder(TicketListViewHolder holder, int position) {
         Request request = mRequests.get(position);
         holder.mRequestIcon.setImageDrawable(ResourcesCompat
                 .getDrawable(holder.mRequestItem.getResources(), request.getIcon(), null));
@@ -58,7 +60,7 @@ public class InWorkOrDoneRecycleViewAdapter
     }
 
 
-    public static class InWorkOrDoneViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class TicketListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @Bind(R.id.request_icon)
         ImageView mRequestIcon;
@@ -78,8 +80,8 @@ public class InWorkOrDoneRecycleViewAdapter
 
         private RelativeLayout mRequestItem;
 
-        public InWorkOrDoneViewHolder(View itemView, List<Request> requests,
-                                      OnRequestSelectListener onRequestSelectListener) {
+        public TicketListViewHolder(View itemView, List<Request> requests,
+                                    OnRequestSelectListener onRequestSelectListener) {
             super(itemView);
             mRequests = requests;
             mOnRequestSelectListener = onRequestSelectListener;

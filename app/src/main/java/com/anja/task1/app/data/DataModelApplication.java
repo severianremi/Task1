@@ -1,9 +1,8 @@
-package com.anja.task1.app;
+package com.anja.task1.app.data;
 
 import android.app.Application;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.facebook.FacebookSdk;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
@@ -44,6 +43,7 @@ public class DataModelApplication extends Application {
     public void onCreate() {
         super.onCreate();
         JodaTimeAndroid.init(this);
+        FacebookSdk.sdkInitialize(this);
         generateData();
     }
 

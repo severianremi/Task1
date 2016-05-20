@@ -1,4 +1,4 @@
-package com.anja.task1.app.fragment;
+package com.anja.task1.app.view.impl;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,30 +8,34 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.anja.task1.app.DataModelApplication;
+
+import com.anja.task1.app.OnRequestSelectListener;
 import com.anja.task1.app.R;
-import com.anja.task1.app.Request;
-import com.anja.task1.app.activity.MainActivity;
-import com.anja.task1.app.activity.SelectedRequestActivity;
+import com.anja.task1.app.data.DataModelApplication;
+import com.anja.task1.app.data.Request;
+import com.anja.task1.app.presenter.FragmentsPresenterImpl;
+import com.anja.task1.app.view.TicketListView;
 import com.software.shell.fab.ActionButton;
 
 
 /**
  * Created by Anna on 11.04.2016.
  */
-public class InWorkOrDoneFragment extends Fragment implements OnRequestSelectListener {
+public class TicketListFragment extends Fragment implements TicketListView, OnRequestSelectListener {
 
     public static final String TYPE_KEY = "type";
     public static final int IN_WORK = 0;
     public static final int DONE = 1;
     public static final int WAIT = 2;
 
-    private InWorkOrDoneRecycleViewAdapter mAdapter = new InWorkOrDoneRecycleViewAdapter();
-
+    private TicketListRecycleViewAdapter mAdapter = new TicketListRecycleViewAdapter();
+private FragmentsPresenterImpl mFragmentPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.in_work_and_done_fragment, null);
+        mFragmentPresenter = new FragmentsPresenterImpl(this) {
+        };
         RecyclerView recyclerViewItems = (RecyclerView) view.findViewById(R.id.in_work_or_done_rv);
 
         LinearLayoutManager linearLayoutManager
@@ -39,6 +43,7 @@ public class InWorkOrDoneFragment extends Fragment implements OnRequestSelectLis
         recyclerViewItems.setLayoutManager(linearLayoutManager);
 
         final ActionButton fab = ((MainActivity) getActivity()).getFab();
+        recyclerViewItems.addOnScrollListener(mFragmentPresenter.buttonStateChanged());
         recyclerViewItems.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

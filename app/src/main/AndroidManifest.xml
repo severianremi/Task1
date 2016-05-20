@@ -9,10 +9,10 @@
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
-            android:name=".DataModelApplication">
+            android:name=".data.DataModelApplication">
 
         <activity
-                android:name=".activity.MainActivity"
+                android:name=".view.impl.MainActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activity.SelectedRequestActivity"
+                android:name=".view.impl.SelectedRequestActivity"
                 android:configChanges="orientation"
                 android:label="@string/selected_request_activity_title"
                 android:screenOrientation="portrait">

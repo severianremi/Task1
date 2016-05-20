@@ -1,10 +1,9 @@
-package com.anja.task1.app.activity;
+package com.anja.task1.app.view.impl;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import com.anja.task1.app.fragment.InWorkOrDoneFragment;
 
 /**
  * Created by Anna on 26.04.2016.
@@ -30,24 +29,24 @@ public class RequestStatusFragmentPagerAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
+         switch (position) {
             case IN_WORK_TAB_POSITION: {
-                return createFragment(InWorkOrDoneFragment.IN_WORK);
+                return createFragment(TicketListFragment.IN_WORK);
             }
             case DONE_TAB_POSITION: {
-                return createFragment(InWorkOrDoneFragment.DONE);
+                return createFragment(TicketListFragment.DONE);
             }
             case WAIT_TAB_POSITION:
-                return createFragment(InWorkOrDoneFragment.WAIT);
+                return createFragment(TicketListFragment.WAIT);
             default:
                 return null;
         }
     }
 
-    private  InWorkOrDoneFragment createFragment(int type){
-        InWorkOrDoneFragment fragment = new InWorkOrDoneFragment();
+    private TicketListFragment createFragment(int type){
+        TicketListFragment fragment = new TicketListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(InWorkOrDoneFragment.TYPE_KEY, type);
+        bundle.putInt(TicketListFragment.TYPE_KEY, type);
         fragment.setArguments(bundle);
         return fragment;
     }

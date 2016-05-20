@@ -1,4 +1,4 @@
-package com.anja.task1.app.activity;
+package com.anja.task1.app.view.impl;
 
 
 import android.os.Bundle;
@@ -11,15 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.anja.task1.app.R;
+import com.anja.task1.app.data.DataModelApplication;
+import com.anja.task1.app.data.Request;
+import com.anja.task1.app.util.DateConverter;
+import com.anja.task1.app.view.SelectedRequestView;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.anja.task1.app.DataModelApplication;
-import com.anja.task1.app.R;
-import com.anja.task1.app.Request;
-import com.anja.task1.app.util.DateConverter;
 
 
-public class SelectedRequestActivity extends AppCompatActivity implements View.OnClickListener {
+public class SelectedRequestActivity extends AppCompatActivity implements SelectedRequestView, View.OnClickListener {
 
     private RequestImageRecycleViewAdapter mImageAdapter;
     @Bind(R.id.selected_request_main_sv)

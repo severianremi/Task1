@@ -1,27 +1,17 @@
-import com.anja.task1.app.RandomRequestFactory;
-import com.anja.task1.app.Request;
-import com.anja.task1.app.dto.Ticket;
-import com.anja.task1.app.service.TicketService;
-import com.anja.task1.app.service.TicketServiceFactory;
+import com.anja.task1.app.data.RandomRequestFactory;
+import com.anja.task1.app.data.Request;
+import com.anja.task1.app.data.ticket.Ticket;
+import com.anja.task1.app.data.service.TicketService;
+import com.anja.task1.app.data.service.TicketServiceFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.http.Query;
-import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Anna on 12.05.2016.

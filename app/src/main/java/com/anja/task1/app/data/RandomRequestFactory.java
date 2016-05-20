@@ -1,4 +1,6 @@
-package com.anja.task1.app;
+package com.anja.task1.app.data;
+
+import com.anja.task1.app.R;
 
 import org.joda.time.DateTime;
 
