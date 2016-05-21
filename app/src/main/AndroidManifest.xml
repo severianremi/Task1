@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".view.impl.SelectedRequestActivity"
+                android:name=".view.impl.SelectedOrderActivity"
                 android:configChanges="orientation"
                 android:label="@string/selected_request_activity_title"
                 android:screenOrientation="portrait">

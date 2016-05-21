@@ -7,7 +7,7 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:background="@color/content_background_color"
-                android:id="@+id/selected_request_main_sv"
+                android:id="@+id/selected_order_main_sv"
                 tools:context=".MainActivity">
         <LinearLayout
                 android:orientation="vertical"
@@ -17,14 +17,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pageTitle"
-                    android:id="@+id/selected_request_title"
+                    android:id="@+id/selected_order_title"
                     android:textSize="@dimen/pageTitleSize"
                     android:textColor="@color/text_color_black"
                     android:layout_marginBottom="@dimen/base_vertical_margin"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="@string/btnStatus"
-                      android:id="@+id/selected_request_status"
+                      android:id="@+id/selected_order_status"
                       android:textColor="@color/btn_text_color"
                       android:textSize="@dimen/content_text_size"
                       android:background="@drawable/status_shape"
@@ -42,7 +42,7 @@
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_create_text"
-                        android:id="@+id/selected_request_create_date"/>
+                        android:id="@+id/selected_order_create_date"/>
             </LinearLayout>
             <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
@@ -54,7 +54,7 @@
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_reg_text"
-                        android:id="@+id/selected_request_register_date"/>
+                        android:id="@+id/selected_order_register_date"/>
             </LinearLayout>
             <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
@@ -67,7 +67,7 @@
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_deadline_text"
-                        android:id="@+id/selected_request_deadline_date"/>
+                        android:id="@+id/selected_order_deadline_date"/>
             </LinearLayout>
             <View style="@style/HorizontalLineStyle"/>
             <LinearLayout
@@ -79,20 +79,20 @@
                 <TextView
                         style="@style/RightStatusContentStyle"
                         android:text="@string/date_resp_text"
-                        android:id="@+id/selected_request_responsible"/>
+                        android:id="@+id/selected_order_responsible"/>
             </LinearLayout>
             <View style="@style/HorizontalLineStyle"/>
             <TextView
                     style="@style/ContentStyle"
                     android:text="@string/content_task"
-                    android:id="@+id/selected_request_text"
+                    android:id="@+id/selected_order_text"
                     android:textColor="@color/text_color_black"
                     android:layout_marginTop="@dimen/content_task_margin_top"
                     android:layout_marginBottom="@dimen/content_task_margin"/>
             <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/selected_request_images_rv"
+                    android:id="@+id/selected_order_images_rv"
                     android:scrollbars="horizontal"
 />
         </LinearLayout>

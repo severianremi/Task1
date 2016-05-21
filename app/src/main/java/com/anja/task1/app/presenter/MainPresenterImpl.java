@@ -3,7 +3,10 @@ package com.anja.task1.app.presenter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.anja.task1.app.data.Order;
 import com.anja.task1.app.view.MainView;
+import com.anja.task1.app.view.impl.OrderListFragment;
+import com.anja.task1.app.view.impl.OrderPageItem;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -16,10 +19,16 @@ import com.facebook.login.LoginResult;
 
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.List;
+
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabListener;
+
 /**
  * Created by Anna on 19.05.2016.
  */
-public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginResult> {
+public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginResult>, MaterialTabListener {
 
     private MainView mMainView;
     private CallbackManager mCallbackManager;
@@ -32,6 +41,7 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
     public void onCreate() {
         mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager, this);
+        mMainView.createTabs(createTicketPages(), this);
     }
 
 
@@ -101,5 +111,36 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
     @Override
     public void onError(FacebookException error) {
         mMainView.showMessage(error.getMessage());
+    }
+
+
+    public List<OrderPageItem> createTicketPages() {
+        return Arrays.asList(
+                new OrderPageItem(mMainView.getInWorkTabName(), createFragment(Order.Status.IN_WORK)),
+                new OrderPageItem(mMainView.getDoneTabName(), createFragment(Order.Status.DONE)),
+                new OrderPageItem(mMainView.getWaitTabName(), createFragment(Order.Status.WAIT))
+        );
+    }
+
+    private OrderListFragment createFragment(Order.Status dataType) {
+        OrderListFragment fragment = new OrderListFragment();
+        OrderListPresenter orderListPresenter = new OrderListPresenterImpl(fragment, dataType);
+        fragment.setmOrderListPresenter(orderListPresenter);
+        return fragment;
+    }
+
+    @Override
+    public void onTabSelected(MaterialTab tab) {
+        mMainView.showTabPage(tab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab tab) {
+
     }
 }

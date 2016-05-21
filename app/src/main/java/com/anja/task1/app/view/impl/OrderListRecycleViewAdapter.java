@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.anja.task1.app.OnRequestSelectListener;
+import com.anja.task1.app.OnOrderSelectListener;
 import com.anja.task1.app.R;
-import com.anja.task1.app.data.Request;
+import com.anja.task1.app.data.Order;
 import com.anja.task1.app.util.DateConverter;
 
 import java.util.List;
@@ -19,44 +19,44 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TicketListRecycleViewAdapter
-        extends RecyclerView.Adapter<TicketListRecycleViewAdapter.TicketListViewHolder> {
+public class OrderListRecycleViewAdapter
+        extends RecyclerView.Adapter<OrderListRecycleViewAdapter.TicketListViewHolder> {
 
 
-    private List<Request> mRequests;
+    private List<Order> mOrders;
 
-    private OnRequestSelectListener mOnRequestSelectListener;
+    private OnOrderSelectListener mOnOrderSelectListener;
 
-    public void setOnRequestSelectListener(OnRequestSelectListener onRequestSelectListener) {
-        mOnRequestSelectListener = onRequestSelectListener;
+    public void setOnRequestSelectListener(OnOrderSelectListener onOrderSelectListener) {
+        mOnOrderSelectListener = onOrderSelectListener;
     }
 
-    public void setRequests(List<Request> mRequests) {
-        this.mRequests = mRequests;
+    public void setOrders(List<Order> mOrders) {
+        this.mOrders = mOrders;
         notifyDataSetChanged();
     }
 
     @Override
     public TicketListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.request_item, parent, false);
-        return new TicketListViewHolder(view, mRequests, mOnRequestSelectListener);
+        return new TicketListViewHolder(view, mOrders, mOnOrderSelectListener);
     }
 
     @Override
     public void onBindViewHolder(TicketListViewHolder holder, int position) {
-        Request request = mRequests.get(position);
+        Order order = mOrders.get(position);
         holder.mRequestIcon.setImageDrawable(ResourcesCompat
-                .getDrawable(holder.mRequestItem.getResources(), request.getIcon(), null));
-        holder.mRequestLikes.setText(String.valueOf(request.getLikes()));
-        holder.mRequestTitle.setText(request.getTitle());
-        holder.mRequestAddress.setText(request.getAddress());
-        holder.mRequestCreateDate.setText(DateConverter.toListItemFormat(request.getCreateDate()));
-        holder.mRequestDays.setText(request.getDays());
+                .getDrawable(holder.mRequestItem.getResources(), order.getIcon(), null));
+        holder.mRequestLikes.setText(String.valueOf(order.getLikes()));
+        holder.mRequestTitle.setText(order.getTitle());
+        holder.mRequestAddress.setText(order.getAddress());
+        holder.mRequestCreateDate.setText(DateConverter.toListItemFormat(order.getCreateDate()));
+        holder.mRequestDays.setText(order.getDays());
     }
 
     @Override
     public int getItemCount() {
-        return mRequests.size();
+        return mOrders.size();
     }
 
 
@@ -75,16 +75,16 @@ public class TicketListRecycleViewAdapter
         @Bind(R.id.request_days)
         TextView mRequestDays;
 
-        private List<Request> mRequests;
-        private  OnRequestSelectListener mOnRequestSelectListener;
+        private List<Order> mOrders;
+        private OnOrderSelectListener mOnOrderSelectListener;
 
         private RelativeLayout mRequestItem;
 
-        public TicketListViewHolder(View itemView, List<Request> requests,
-                                    OnRequestSelectListener onRequestSelectListener) {
+        public TicketListViewHolder(View itemView, List<Order> orders,
+                                    OnOrderSelectListener onOrderSelectListener) {
             super(itemView);
-            mRequests = requests;
-            mOnRequestSelectListener = onRequestSelectListener;
+            mOrders = orders;
+            mOnOrderSelectListener = onOrderSelectListener;
             ButterKnife.bind(this, itemView);
             mRequestItem = (RelativeLayout) itemView;
             mRequestItem.setOnClickListener(this);
@@ -93,8 +93,8 @@ public class TicketListRecycleViewAdapter
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Request selectedRequest = mRequests.get(itemPosition);
-            mOnRequestSelectListener.onRequestSelect(selectedRequest);
+            Order selectedOrder = mOrders.get(itemPosition);
+            mOnOrderSelectListener.onOrderSelect(selectedOrder);
         }
 
 

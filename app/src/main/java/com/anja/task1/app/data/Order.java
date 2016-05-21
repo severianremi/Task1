@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Anna on 16.04.2016.
  */
-public class Request {
+public class Order {
 
     private String mTitle;
     private Status mStatus;

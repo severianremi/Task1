@@ -14,40 +14,40 @@ import android.widget.Toast;
 
 import com.anja.task1.app.R;
 import com.anja.task1.app.data.DataModelApplication;
-import com.anja.task1.app.data.Request;
+import com.anja.task1.app.data.Order;
 import com.anja.task1.app.util.DateConverter;
-import com.anja.task1.app.view.SelectedRequestView;
+import com.anja.task1.app.view.SelectedOrderView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class SelectedRequestActivity extends AppCompatActivity implements SelectedRequestView, View.OnClickListener {
+public class SelectedOrderActivity extends AppCompatActivity implements SelectedOrderView, View.OnClickListener {
 
-    private RequestImageRecycleViewAdapter mImageAdapter;
-    @Bind(R.id.selected_request_main_sv)
+    private OrderImageRecycleViewAdapter mImageAdapter;
+    @Bind(R.id.selected_order_main_sv)
     ViewGroup mMainSv;
-    @Bind(R.id.selected_request_images_rv)
+    @Bind(R.id.selected_order_images_rv)
     RecyclerView mImagesRv;
-    @Bind(R.id.selected_request_title)
-    TextView mRequestTitle;
-    @Bind(R.id.selected_request_status)
-    TextView mRequestStatus;
-    @Bind(R.id.selected_request_create_date)
-    TextView mRequestCreateDate;
-    @Bind(R.id.selected_request_register_date)
-    TextView mRequestRegisterDate;
-    @Bind(R.id.selected_request_deadline_date)
-    TextView mRequestDeadlineDate;
-    @Bind(R.id.selected_request_responsible)
-    TextView mRequestResponsible;
-    @Bind(R.id.selected_request_text)
-    TextView mRequestText;
+    @Bind(R.id.selected_order_title)
+    TextView mOrderTitle;
+    @Bind(R.id.selected_order_status)
+    TextView mOrderStatus;
+    @Bind(R.id.selected_order_create_date)
+    TextView mOrderCreateDate;
+    @Bind(R.id.selected_order_register_date)
+    TextView mOrderRegisterDate;
+    @Bind(R.id.selected_order_deadline_date)
+    TextView mOrderDeadlineDate;
+    @Bind(R.id.selected_order_responsible)
+    TextView mOrderResponsible;
+    @Bind(R.id.selected_order_text)
+    TextView mOrderText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selected_request);
+        setContentView(R.layout.activity_selected_order);
         ButterKnife.bind(this);
 
         ActionBar actionBar = getSupportActionBar();
@@ -59,23 +59,23 @@ public class SelectedRequestActivity extends AppCompatActivity implements Select
         LinearLayoutManager lm
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mImagesRv.setLayoutManager(lm);
-        mImageAdapter = new RequestImageRecycleViewAdapter();
+        mImageAdapter = new OrderImageRecycleViewAdapter();
         mImagesRv.setAdapter(mImageAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Request request = DataModelApplication.getSelectedRequest();
-        mRequestTitle.setText(request.getTitle());
-        String status = getResources().getString(request.getStatus().getTitleId());
-        mRequestStatus.setText(status);
-        mRequestCreateDate.setText(DateConverter.toSelectedRequestFormat(request.getCreateDate()));
-        mRequestRegisterDate.setText(DateConverter.toSelectedRequestFormat(request.getRegisterDate()));
-        mRequestDeadlineDate.setText(DateConverter.toSelectedRequestFormat(request.getDeadlineDate()));
-        mRequestResponsible.setText(request.getResponsible());
-        mRequestText.setText(request.getText());
-        mImageAdapter.setImages(request.getImages());
+        Order order = DataModelApplication.getSelectedOrder();
+        mOrderTitle.setText(order.getTitle());
+        String status = getResources().getString(order.getStatus().getTitleId());
+        mOrderStatus.setText(status);
+        mOrderCreateDate.setText(DateConverter.toSelectedOrderFormat(order.getCreateDate()));
+        mOrderRegisterDate.setText(DateConverter.toSelectedOrderFormat(order.getRegisterDate()));
+        mOrderDeadlineDate.setText(DateConverter.toSelectedOrderFormat(order.getDeadlineDate()));
+        mOrderResponsible.setText(order.getResponsible());
+        mOrderText.setText(order.getText());
+        mImageAdapter.setImages(order.getImages());
     }
 
     @Override

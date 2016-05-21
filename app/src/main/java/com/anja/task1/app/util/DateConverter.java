@@ -28,7 +28,7 @@ public class DateConverter {
     private DateConverter() {
     }
 
-    public static String toSelectedRequestFormat(DateTime date){
+    public static String toSelectedOrderFormat(DateTime date){
         return SELECTED_REQUEST_FORMATTER.print(date);
     }
 

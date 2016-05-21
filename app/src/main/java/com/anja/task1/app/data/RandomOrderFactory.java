@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Created by Anna on 16.04.2016.
  */
-public class RandomRequestFactory {
+public class RandomOrderFactory {
 
     private Random mRandom = new Random();
 
@@ -54,25 +54,25 @@ public class RandomRequestFactory {
             "Дніпропетровськ, проспект Богдана Хмельницького, 5-А"};
 
 
-  public Request generateRequest(Request.Status status){
-      Request request = new Request();
-      request.setStatus(status);
-      request.setTitle(mTitles[mRandom.nextInt(mTitles.length)]);
+  public Order generateOrder(Order.Status status){
+      Order order = new Order();
+      order.setStatus(status);
+      order.setTitle(mTitles[mRandom.nextInt(mTitles.length)]);
       List<Integer> randomImages = new ArrayList<Integer>();
       for (int i = 0; i<4; i++) {
           randomImages.add(mImages[mRandom.nextInt(mImages.length)]);
       }
-      request.setImages(randomImages);
-      request.setIcon(mIcons[mRandom.nextInt(mIcons.length)]);
-      request.setResponsible(mResponsible[mRandom.nextInt(mResponsible.length)]);
-      request.setText(mTexts[mRandom.nextInt(mTexts.length)]);
-      request.setLikes(mRandom.nextInt(100));
-      request.setAddress(mAddresses[mRandom.nextInt(mAddresses.length)]);
-      request.setDays((mRandom.nextInt(10)+2)+" днів");
+      order.setImages(randomImages);
+      order.setIcon(mIcons[mRandom.nextInt(mIcons.length)]);
+      order.setResponsible(mResponsible[mRandom.nextInt(mResponsible.length)]);
+      order.setText(mTexts[mRandom.nextInt(mTexts.length)]);
+      order.setLikes(mRandom.nextInt(100));
+      order.setAddress(mAddresses[mRandom.nextInt(mAddresses.length)]);
+      order.setDays((mRandom.nextInt(10)+2)+" днів");
       DateTime randomCreateDate = new DateTime(2016, mRandom.nextInt(12)+1, mRandom.nextInt(29)+1, 0, 0);
-      request.setCreateDate(randomCreateDate);
-      request.setRegisterDate(randomCreateDate.plusDays(1));
-      request.setDeadlineDate(randomCreateDate.plusDays(mRandom.nextInt(10) + 1));
-      return request;
+      order.setCreateDate(randomCreateDate);
+      order.setRegisterDate(randomCreateDate.plusDays(1));
+      order.setDeadlineDate(randomCreateDate.plusDays(mRandom.nextInt(10) + 1));
+      return order;
   }
 }

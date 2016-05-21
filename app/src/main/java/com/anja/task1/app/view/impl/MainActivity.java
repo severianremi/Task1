@@ -25,11 +25,11 @@ import com.software.shell.fab.ActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
-import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
@@ -71,16 +71,15 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new MainPresenterImpl(this);
-        mPresenter.onCreate();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mPresenter.onCreate();
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavFooterView.setText(Html.fromHtml(mNavFooterText));
         mToolbar.setNavigationIcon(R.drawable.ic_menu);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(mActivityTitle);
         mToolbar.setNavigationOnClickListener(this);
-        createTabs();
     }
 
     //TODO Разобраться позже с фрагментами
@@ -88,10 +87,9 @@ public class MainActivity extends AppCompatActivity
         return mFab;
     }
 
-    private void createTabs(){
-        RequestStatusFragmentPagerAdapter adapter = new RequestStatusFragmentPagerAdapter(
-                getSupportFragmentManager(),
-                new String[]{mInWorkTabText, mDoneTabText, mWaitTabText});
+    public void createTabs(List<OrderPageItem> orderPageItems, MaterialTabListener materialTabListener){
+        OrderStatusFragmentPagerAdapter adapter = new OrderStatusFragmentPagerAdapter(
+                getSupportFragmentManager(), orderPageItems);
         mViewPager.setAdapter(adapter);
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -102,25 +100,13 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < adapter.getCount(); i++) {
             mTabHost.addTab(mTabHost.newTab()
                     .setText(adapter.getPageTitle(i))
-                    .setTabListener(createTabListener()));
+                    .setTabListener(materialTabListener));
         }
     }
 
-    private MaterialTabListener createTabListener() {
-        return new MaterialTabListener() {
-            @Override
-            public void onTabSelected(MaterialTab materialTab) {
-                mViewPager.setCurrentItem(materialTab.getPosition());
-            }
-
-            @Override
-            public void onTabReselected(MaterialTab materialTab) {
-            }
-
-            @Override
-            public void onTabUnselected(MaterialTab materialTab) {
-            }
-        };
+    @Override
+    public void showTabPage(int tabPosition) {
+        mViewPager.setCurrentItem(tabPosition);
     }
 
     @Override
@@ -195,4 +181,18 @@ public class MainActivity extends AppCompatActivity
         Picasso.with(getApplicationContext()).load(photoUrl).into(mProfilePhoto);
     }
 
+    @Override
+    public String getDoneTabName() {
+        return mDoneTabText;
+    }
+
+    @Override
+    public String getInWorkTabName() {
+        return mInWorkTabText;
+    }
+
+    @Override
+    public String getWaitTabName() {
+        return mWaitTabText;
+    }
 }

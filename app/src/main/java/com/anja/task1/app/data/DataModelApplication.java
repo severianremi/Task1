@@ -14,29 +14,29 @@ import java.util.List;
  */
 public class DataModelApplication extends Application {
 
-    private static List<Request> sInWorkRequests;
-    private static List<Request> sDoneRequests;
-    private static List<Request> sWaitRequests;
-    private static Request sSelectedRequest;
+    private static List<Order> sInWorkOrders;
+    private static List<Order> sDoneOrders;
+    private static List<Order> sWaitOrders;
+    private static Order sSelectedOrder;
 
-    public static List<Request> getInWorkRequests() {
-        return sInWorkRequests;
+    public static List<Order> getInWorkOrders() {
+        return sInWorkOrders;
     }
 
-    public static List<Request> getDoneRequests() {
-        return sDoneRequests;
+    public static List<Order> getDoneOrders() {
+        return sDoneOrders;
     }
 
-    public static List<Request> getWaitRequests() {
-        return sWaitRequests;
+    public static List<Order> getWaitOrders() {
+        return sWaitOrders;
     }
 
-    public static Request getSelectedRequest() {
-        return sSelectedRequest;
+    public static Order getSelectedOrder() {
+        return sSelectedOrder;
     }
 
-    public static void setSelectedRequest(Request selectedRequest) {
-        sSelectedRequest = selectedRequest;
+    public static void setSelectedOrder(Order selectedOrder) {
+        sSelectedOrder = selectedOrder;
     }
 
     @Override
@@ -48,15 +48,15 @@ public class DataModelApplication extends Application {
     }
 
     private void generateData() {
-        sInWorkRequests = new ArrayList<Request>();
-        sDoneRequests = new ArrayList<Request>();
-        sWaitRequests = new ArrayList<Request>();
-        RandomRequestFactory factory = new RandomRequestFactory();
+        sInWorkOrders = new ArrayList<Order>();
+        sDoneOrders = new ArrayList<Order>();
+        sWaitOrders = new ArrayList<Order>();
+        RandomOrderFactory factory = new RandomOrderFactory();
 
         for(int i = 0; i<10; i++){
-            sInWorkRequests.add(factory.generateRequest(Request.Status.IN_WORK));
-            sDoneRequests.add(factory.generateRequest(Request.Status.DONE));
-            sWaitRequests.add(factory.generateRequest(Request.Status.WAIT));
+            sInWorkOrders.add(factory.generateOrder(Order.Status.IN_WORK));
+            sDoneOrders.add(factory.generateOrder(Order.Status.DONE));
+            sWaitOrders.add(factory.generateOrder(Order.Status.WAIT));
         }
     }
 }

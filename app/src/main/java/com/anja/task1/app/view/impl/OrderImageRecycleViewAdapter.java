@@ -11,8 +11,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RequestImageRecycleViewAdapter
-        extends RecyclerView.Adapter<RequestImageRecycleViewAdapter.TaskImageViewHolder> {
+public class OrderImageRecycleViewAdapter
+        extends RecyclerView.Adapter<OrderImageRecycleViewAdapter.TaskImageViewHolder> {
 
     private List<Integer> mImages;
 

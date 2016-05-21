@@ -1,5 +1,5 @@
-import com.anja.task1.app.data.RandomRequestFactory;
-import com.anja.task1.app.data.Request;
+import com.anja.task1.app.data.RandomOrderFactory;
+import com.anja.task1.app.data.Order;
 import com.anja.task1.app.data.ticket.Ticket;
 import com.anja.task1.app.data.service.TicketService;
 import com.anja.task1.app.data.service.TicketServiceFactory;
@@ -43,9 +43,9 @@ public class ConvertJsonTest {
     public static void requestToJson(){
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
-        RandomRequestFactory factory = new RandomRequestFactory();
+        RandomOrderFactory factory = new RandomOrderFactory();
 
-        String json = gson.toJson(factory.generateRequest(Request.Status.IN_WORK));
+        String json = gson.toJson(factory.generateOrder(Order.Status.IN_WORK));
         System.out.println(json);
 
         Retrofit retrofit = new Retrofit.Builder()
