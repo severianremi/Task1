@@ -17,6 +17,22 @@ public class AddressName {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRu_name() {
+        return ru_name;
+    }
+
+    public void setRu_name(String ru_name) {
+        this.ru_name = ru_name;
+    }
+
     @Override
     public String toString() {
         return "AddressName{" +

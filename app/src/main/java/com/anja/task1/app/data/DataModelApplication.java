@@ -59,4 +59,5 @@ public class DataModelApplication extends Application {
             sWaitOrders.add(factory.generateOrder(Order.Status.WAIT));
         }
     }
+
 }

@@ -18,7 +18,7 @@ public class Order {
     private DateTime mDeadlineDate;
     private String mResponsible;
     private String mText;
-    private List<Integer> mImages;
+    private List<String> mImages;
     private int mIcon;
     private int mLikes;
     private String mAddress;
@@ -96,11 +96,11 @@ public class Order {
         this.mText = mText;
     }
 
-    public List<Integer> getImages() {
+    public List<String> getImages() {
         return mImages;
     }
 
-    public void setImages(List<Integer> mImages) {
+    public void setImages(List<String> mImages) {
         this.mImages = mImages;
     }
 
@@ -134,5 +134,23 @@ public class Order {
 
     public void setDays(String mDays) {
         this.mDays = mDays;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "mTitle='" + mTitle + '\'' +
+                ", mStatus=" + mStatus +
+                ", mCreateDate=" + mCreateDate +
+                ", mRegisterDate=" + mRegisterDate +
+                ", mDeadlineDate=" + mDeadlineDate +
+                ", mResponsible='" + mResponsible + '\'' +
+                ", mText='" + mText + '\'' +
+                ", mImages=" + mImages +
+                ", mIcon=" + mIcon +
+                ", mLikes=" + mLikes +
+                ", mAddress='" + mAddress + '\'' +
+                ", mDays='" + mDays + '\'' +
+                '}';
     }
 }

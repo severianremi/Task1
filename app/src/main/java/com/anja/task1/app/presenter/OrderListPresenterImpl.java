@@ -1,5 +1,7 @@
 package com.anja.task1.app.presenter;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.anja.task1.app.data.DataModelApplication;
 import com.anja.task1.app.data.Order;
 import com.anja.task1.app.view.OrderListView;
@@ -9,7 +11,7 @@ import java.util.List;
 /**
  * Created by Anna on 19.05.2016.
  */
-public class OrderListPresenterImpl implements OrderListPresenter {
+public class OrderListPresenterImpl extends OrderListPresenter {
 
 
     private Order.Status mDataType;
@@ -36,5 +38,21 @@ public class OrderListPresenterImpl implements OrderListPresenter {
             default:
                 return null;
         }
+    }
+
+
+    @Override
+    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+            mOrderListView.showButton();
+        } else {
+            mOrderListView.hideButton();
+        }
+    }
+
+    @Override
+    public void onOrderSelect(Order selectedOrder) {
+        DataModelApplication.setSelectedOrder(selectedOrder);
+        mOrderListView.startSelectedOrderActivity();
     }
 }

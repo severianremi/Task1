@@ -14,7 +14,12 @@ import java.util.List;
 public class OrderImageRecycleViewAdapter
         extends RecyclerView.Adapter<OrderImageRecycleViewAdapter.TaskImageViewHolder> {
 
-    private List<Integer> mImages;
+    private List<String> mImages;
+    private View.OnClickListener mOnClickListener;
+
+    public OrderImageRecycleViewAdapter(View.OnClickListener mOnClickListener) {
+        this.mOnClickListener = mOnClickListener;
+    }
 
     @Override
     public TaskImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -23,7 +28,7 @@ public class OrderImageRecycleViewAdapter
         return new TaskImageViewHolder(view);
     }
 
-    public void setImages(List<Integer> images) {
+    public void setImages(List<String> images) {
         mImages = images;
         notifyDataSetChanged();
     }
@@ -44,13 +49,14 @@ public class OrderImageRecycleViewAdapter
     }
 
 
-    public static class TaskImageViewHolder extends RecyclerView.ViewHolder {
+    public class TaskImageViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mTaskImageView;
 
         public TaskImageViewHolder(View itemView) {
             super(itemView);
             mTaskImageView = (ImageView) itemView;
+            mTaskImageView.setOnClickListener(mOnClickListener);
         }
     }
 

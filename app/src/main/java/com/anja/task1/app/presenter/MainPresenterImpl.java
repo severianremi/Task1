@@ -125,7 +125,7 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
     private OrderListFragment createFragment(Order.Status dataType) {
         OrderListFragment fragment = new OrderListFragment();
         OrderListPresenter orderListPresenter = new OrderListPresenterImpl(fragment, dataType);
-        fragment.setmOrderListPresenter(orderListPresenter);
+        fragment.setOrderListPresenter(orderListPresenter);
         return fragment;
     }
 

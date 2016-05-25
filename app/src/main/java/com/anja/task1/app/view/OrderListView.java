@@ -10,4 +10,7 @@ import java.util.List;
 public interface OrderListView {
 
     void showOrders(List<Order> orders);
+    void startSelectedOrderActivity();
+    void showButton();
+    void hideButton();
 }

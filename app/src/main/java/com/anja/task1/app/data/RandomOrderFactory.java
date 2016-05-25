@@ -22,13 +22,13 @@ public class RandomOrderFactory {
             "Ремонт та обслуговування",
             "Прибирання та санітарний стан території"};
 
-    private int[] mImages = {
-            R.drawable.manhole,
-            R.drawable.open_manhole,
-            R.drawable.trams,
-            R.drawable.donetsk_street,
-            R.drawable.luke,
-            R.drawable.open_luke};
+    private String[] mImages = {
+            "http://dev-contact.yalantis.com/files/ticket/cropped1453136112592.jpg",
+            "http://dev-contact.yalantis.com/files/ticket/cropped1453136116611.jpg",
+            "http://dev-contact.yalantis.com/files/ticket/cropped1453136110734.jpg",
+            "http://dev-contact.yalantis.com/files/ticket/cropped1453136120933.jpg",
+            "http://dev-contact.yalantis.com/files/ticket/cropped1452615631579.jpg",
+            };
 
     private int[] mIcons = {
             R.drawable.ic_build,
@@ -58,7 +58,7 @@ public class RandomOrderFactory {
       Order order = new Order();
       order.setStatus(status);
       order.setTitle(mTitles[mRandom.nextInt(mTitles.length)]);
-      List<Integer> randomImages = new ArrayList<Integer>();
+      List<String> randomImages = new ArrayList<String>();
       for (int i = 0; i<4; i++) {
           randomImages.add(mImages[mRandom.nextInt(mImages.length)]);
       }

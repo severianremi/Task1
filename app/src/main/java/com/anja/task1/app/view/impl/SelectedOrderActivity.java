@@ -13,8 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anja.task1.app.R;
-import com.anja.task1.app.data.DataModelApplication;
 import com.anja.task1.app.data.Order;
+import com.anja.task1.app.presenter.SelectedOrderPresenter;
+import com.anja.task1.app.presenter.SelectedOrderPresenterImpl;
 import com.anja.task1.app.util.DateConverter;
 import com.anja.task1.app.view.SelectedOrderView;
 
@@ -22,9 +23,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class SelectedOrderActivity extends AppCompatActivity implements SelectedOrderView, View.OnClickListener {
+public class SelectedOrderActivity extends AppCompatActivity implements SelectedOrderView {
 
     private OrderImageRecycleViewAdapter mImageAdapter;
+    private SelectedOrderPresenter mSelectedOrderPresenter;
+
     @Bind(R.id.selected_order_main_sv)
     ViewGroup mMainSv;
     @Bind(R.id.selected_order_images_rv)
@@ -49,24 +52,27 @@ public class SelectedOrderActivity extends AppCompatActivity implements Selected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_order);
         ButterKnife.bind(this);
-
+        mSelectedOrderPresenter = new SelectedOrderPresenterImpl(this);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        setOnClickListenerForChildren(mMainSv);
-
         LinearLayoutManager lm
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mImagesRv.setLayoutManager(lm);
-        mImageAdapter = new OrderImageRecycleViewAdapter();
+        mImageAdapter = new OrderImageRecycleViewAdapter(mSelectedOrderPresenter);
         mImagesRv.setAdapter(mImageAdapter);
+        mSelectedOrderPresenter.onCreate();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Order order = DataModelApplication.getSelectedOrder();
+        mSelectedOrderPresenter.onResume();
+    }
+
+    @Override
+    public void showOrder(Order order) {
         mOrderTitle.setText(order.getTitle());
         String status = getResources().getString(order.getStatus().getTitleId());
         mOrderStatus.setText(status);
@@ -88,23 +94,27 @@ public class SelectedOrderActivity extends AppCompatActivity implements Selected
         }
     }
 
+
     @Override
-    public void onClick(View v) {
-        String msg = v.getClass().getSimpleName() + " id: " + v.getResources().getResourceEntryName(v.getId());
+    public void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void setOnClickListenerForChildren(ViewGroup parent) {
+    @Override
+    public void setOnClickListenerForChildren(View.OnClickListener onClickListener) {
+        setOnClickListenerForChildren(mMainSv, onClickListener);
+    }
+
+    private void setOnClickListenerForChildren(ViewGroup parent, View.OnClickListener onClickListener) {
         for (int i = 0; i <= parent.getChildCount() - 1; i++) {
-            final View child = parent.getChildAt(i);
+            View child = parent.getChildAt(i);
             if (child instanceof ViewGroup) {
-                setOnClickListenerForChildren((ViewGroup) child);
+                setOnClickListenerForChildren((ViewGroup) child, onClickListener);
             } else {
                 if (child != null && child instanceof TextView) {
-                    child.setOnClickListener(this);
+                    child.setOnClickListener(onClickListener);
                 }
             }
         }
     }
-
 }

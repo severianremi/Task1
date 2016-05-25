@@ -20,6 +20,46 @@ public class Address{
         this.id = id;
     }
 
+    public AddressName getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(AddressName district) {
+        this.district = district;
+    }
+
+    public AddressName getCity() {
+        return city;
+    }
+
+    public void setCity(AddressName city) {
+        this.city = city;
+    }
+
+    public Street getStreet() {
+        return street;
+    }
+
+    public void setStreet(Street street) {
+        this.street = street;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
+    }
+
+    public String getFlat() {
+        return flat;
+    }
+
+    public void setFlat(String flat) {
+        this.flat = flat;
+    }
+
     @Override
     public String toString() {
         return "Address{" +

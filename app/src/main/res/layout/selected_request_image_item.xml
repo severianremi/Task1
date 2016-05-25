@@ -4,6 +4,5 @@
         android:layout_width="@dimen/task_image_width"
         android:layout_height="@dimen/task_image_height"
         android:id="@+id/img_view"
-        android:onClick="onClick"
         android:layout_marginTop="@dimen/task_image_margin"
         android:layout_marginRight="@dimen/task_image_margin"/>
