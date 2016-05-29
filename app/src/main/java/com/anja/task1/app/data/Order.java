@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Order {
 
+    private int mId;
     private String mTitle;
     private Status mStatus;
     private DateTime mCreateDate;
@@ -38,6 +39,8 @@ public class Order {
         public int getTitleId() {
             return mTitleId;
         }
+
+
     }
 
     public String getTitle() {
@@ -136,10 +139,19 @@ public class Order {
         this.mDays = mDays;
     }
 
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        this.mId = id;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "mTitle='" + mTitle + '\'' +
+                "mId=" + mId +
+                ", mTitle='" + mTitle + '\'' +
                 ", mStatus=" + mStatus +
                 ", mCreateDate=" + mCreateDate +
                 ", mRegisterDate=" + mRegisterDate +

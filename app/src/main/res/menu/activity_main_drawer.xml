@@ -13,12 +13,16 @@
                 android:icon="@drawable/ic_map"
                 android:title="@string/request_on_map_item"/>
 
+
     </group>
 
     <group android:id="@+id/login_group">
         <item
                 android:id="@+id/nav_login"
                 android:title="@string/login_item"/>
+        <item
+            android:id="@+id/refresh"
+            android:title="@string/refresh"/>
     </group>
 
 </menu>

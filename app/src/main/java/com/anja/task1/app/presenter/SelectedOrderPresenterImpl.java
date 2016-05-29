@@ -2,7 +2,7 @@ package com.anja.task1.app.presenter;
 
 import android.view.View;
 
-import com.anja.task1.app.data.DataModelApplication;
+import com.anja.task1.app.data.OrderRepository;
 import com.anja.task1.app.view.SelectedOrderView;
 
 /**
@@ -11,6 +11,11 @@ import com.anja.task1.app.view.SelectedOrderView;
 public class SelectedOrderPresenterImpl implements SelectedOrderPresenter{
 
     private SelectedOrderView mSelectedOrderView;
+    private OrderRepository mOrderRepository;
+
+    public void setOrderRepository(OrderRepository orderRepository) {
+        this.mOrderRepository = orderRepository;
+    }
 
     public SelectedOrderPresenterImpl(SelectedOrderView selectedOrderView) {
         this.mSelectedOrderView = selectedOrderView;
@@ -25,7 +30,7 @@ public class SelectedOrderPresenterImpl implements SelectedOrderPresenter{
 
     @Override
     public void onResume() {
-        mSelectedOrderView.showOrder(DataModelApplication.getSelectedOrder());
+        mSelectedOrderView.showOrder(mOrderRepository.getSelectedOrder());
     }
 
     @Override

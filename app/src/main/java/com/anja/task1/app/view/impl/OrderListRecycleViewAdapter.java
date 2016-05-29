@@ -56,6 +56,9 @@ public class OrderListRecycleViewAdapter
 
     @Override
     public int getItemCount() {
+        if(mOrders == null){
+            return 0;
+        }
         return mOrders.size();
     }
 

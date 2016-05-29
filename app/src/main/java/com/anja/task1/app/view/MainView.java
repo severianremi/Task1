@@ -25,6 +25,4 @@ public interface MainView {
     void showTabPage(int tabPosition);
 
 
-
-
 }

@@ -3,7 +3,11 @@ package com.anja.task1.app.presenter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.anja.task1.app.data.FBProfile;
+import com.anja.task1.app.data.FBProfileDao;
+import com.anja.task1.app.data.Global;
 import com.anja.task1.app.data.Order;
+import com.anja.task1.app.data.OrderRepository;
 import com.anja.task1.app.view.MainView;
 import com.anja.task1.app.view.impl.OrderListFragment;
 import com.anja.task1.app.view.impl.OrderPageItem;
@@ -11,6 +15,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
@@ -32,15 +37,34 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
 
     private MainView mMainView;
     private CallbackManager mCallbackManager;
+    private FBProfileDao mFbProfileDao;
+    private OrderRepository mOrderRepository;
+    private OrderListPresenter mInWorkPresenter;
+    private OrderListPresenter mDonePresenter;
+    private OrderListPresenter mWaitPresenter;
+
+    public void setOrderRepository(OrderRepository orderRepository) {
+        this.mOrderRepository = orderRepository;
+    }
 
     public MainPresenterImpl(MainView mainView) {
         this.mMainView = mainView;
+    }
+
+    public void setFbProfileDao(FBProfileDao fbProfileDao) {
+        this.mFbProfileDao = fbProfileDao;
     }
 
     @Override
     public void onCreate() {
         mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager, this);
+        FBProfile fbProfile = mFbProfileDao.loadProfile();
+        if (fbProfile != null) {
+            mMainView.showUserProfileInformation(fbProfile.getUserName(), fbProfile.getPhotoUrl());
+            AccessToken.setCurrentAccessToken(new AccessToken(fbProfile.getAccessToken(),
+                    FacebookSdk.getApplicationId(), fbProfile.getUserId(), null, null, null, null, null));
+        }
         mMainView.createTabs(createTicketPages(), this);
     }
 
@@ -52,6 +76,14 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
 
     public void onFacebookLogInButtonPress() {
         mMainView.showLogInFacebook();
+    }
+
+    @Override
+    public void onRefreshButtonPress() {
+        mOrderRepository.clearCache();
+        mInWorkPresenter.onResume();
+        mDonePresenter.onResume();
+        mWaitPresenter.onResume();
     }
 
     @Override
@@ -95,6 +127,12 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
                                             .getJSONObject("data").getString("url");
                                 }
                                 mMainView.showUserProfileInformation(userName, profilePicUrl);
+                                FBProfile fbProfile = new FBProfile();
+                                fbProfile.setAccessToken(AccessToken.getCurrentAccessToken().getToken());
+                                fbProfile.setUserId(AccessToken.getCurrentAccessToken().getUserId());
+                                fbProfile.setUserName(userName);
+                                fbProfile.setPhotoUrl(profilePicUrl);
+                                mFbProfileDao.saveProfile(fbProfile);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -102,6 +140,7 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
                     }
                 }).executeAsync();
     }
+
 
     @Override
     public void onCancel() {
@@ -114,7 +153,7 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
     }
 
 
-    public List<OrderPageItem> createTicketPages() {
+    private List<OrderPageItem> createTicketPages() {
         return Arrays.asList(
                 new OrderPageItem(mMainView.getInWorkTabName(), createFragment(Order.Status.IN_WORK)),
                 new OrderPageItem(mMainView.getDoneTabName(), createFragment(Order.Status.DONE)),
@@ -124,8 +163,19 @@ public class MainPresenterImpl implements MainPresenter, FacebookCallback<LoginR
 
     private OrderListFragment createFragment(Order.Status dataType) {
         OrderListFragment fragment = new OrderListFragment();
-        OrderListPresenter orderListPresenter = new OrderListPresenterImpl(fragment, dataType);
+        OrderListPresenterImpl orderListPresenter = new OrderListPresenterImpl(fragment, dataType);
+        orderListPresenter.setOrderRepository(mOrderRepository);
         fragment.setOrderListPresenter(orderListPresenter);
+        switch (dataType){
+            case IN_WORK:
+                mInWorkPresenter = orderListPresenter;
+                break;
+            case DONE:
+                mDonePresenter = orderListPresenter;
+                break;
+            case WAIT:
+                mWaitPresenter = orderListPresenter;
+        }
         return fragment;
     }
 

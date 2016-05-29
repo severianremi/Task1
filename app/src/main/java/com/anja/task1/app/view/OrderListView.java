@@ -13,4 +13,10 @@ public interface OrderListView {
     void startSelectedOrderActivity();
     void showButton();
     void hideButton();
+
+    void showMessage(String message);
+
+    int getItemCount();
+
+    int findFirstVisibleItemPosition();
 }

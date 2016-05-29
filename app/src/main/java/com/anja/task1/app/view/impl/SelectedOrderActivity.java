@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anja.task1.app.R;
+import com.anja.task1.app.data.Global;
 import com.anja.task1.app.data.Order;
 import com.anja.task1.app.presenter.SelectedOrderPresenter;
 import com.anja.task1.app.presenter.SelectedOrderPresenterImpl;
@@ -52,7 +53,9 @@ public class SelectedOrderActivity extends AppCompatActivity implements Selected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_order);
         ButterKnife.bind(this);
-        mSelectedOrderPresenter = new SelectedOrderPresenterImpl(this);
+        SelectedOrderPresenterImpl selectedOrderPresenter = new SelectedOrderPresenterImpl(this);
+        selectedOrderPresenter.setOrderRepository(Global.getOrderRepository());
+        mSelectedOrderPresenter = selectedOrderPresenter;
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -81,7 +84,7 @@ public class SelectedOrderActivity extends AppCompatActivity implements Selected
         mOrderDeadlineDate.setText(DateConverter.toSelectedOrderFormat(order.getDeadlineDate()));
         mOrderResponsible.setText(order.getResponsible());
         mOrderText.setText(order.getText());
-        mImageAdapter.setImages(order.getImages());
+        mImageAdapter.setImageNames(order.getImages());
     }
 
     @Override

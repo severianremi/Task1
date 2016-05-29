@@ -13,4 +13,6 @@ public interface MainPresenter {
     void onNavigationButtonPress();
     void onFinishNavigationItemSelected();
     void onBackPressed();
+
+    void onRefreshButtonPress();
 }

@@ -35,5 +35,6 @@
     <string name="wait_request_status">Очікує</string>
     <string name="app_name">Task2</string>
     <string name="facebook_app_id">1205664589464647</string>
+    <string name="refresh">Видалити кеш</string>
 
 </resources>

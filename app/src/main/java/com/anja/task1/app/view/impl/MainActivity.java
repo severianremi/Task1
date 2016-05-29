@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anja.task1.app.R;
+import com.anja.task1.app.data.Global;
 import com.anja.task1.app.presenter.MainPresenter;
 import com.anja.task1.app.presenter.MainPresenterImpl;
 import com.anja.task1.app.view.MainView;
@@ -70,7 +71,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new MainPresenterImpl(this);
+        MainPresenterImpl mainPresenter = new MainPresenterImpl(this);
+        mainPresenter.setOrderRepository(Global.getOrderRepository());
+        mainPresenter.setFbProfileDao(Global.getFBProfileDao());
+        mPresenter = mainPresenter;
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mPresenter.onCreate();
@@ -82,12 +86,11 @@ public class MainActivity extends AppCompatActivity
         mToolbar.setNavigationOnClickListener(this);
     }
 
-    //TODO Разобраться позже с фрагментами
     public ActionButton getFab() {
         return mFab;
     }
 
-    public void createTabs(List<OrderPageItem> orderPageItems, MaterialTabListener materialTabListener){
+    public void createTabs(List<OrderPageItem> orderPageItems, MaterialTabListener materialTabListener) {
         OrderStatusFragmentPagerAdapter adapter = new OrderStatusFragmentPagerAdapter(
                 getSupportFragmentManager(), orderPageItems);
         mViewPager.setAdapter(adapter);
@@ -144,6 +147,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.nav_login) {
             mPresenter.onFacebookLogInButtonPress();
+        } else if (item.getItemId() == R.id.refresh){
+            mPresenter.onRefreshButtonPress();
         }
         mPresenter.onFinishNavigationItemSelected();
         return true;
@@ -195,4 +200,6 @@ public class MainActivity extends AppCompatActivity
     public String getWaitTabName() {
         return mWaitTabText;
     }
+
+
 }

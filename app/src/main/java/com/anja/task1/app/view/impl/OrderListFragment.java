@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.anja.task1.app.R;
 import com.anja.task1.app.data.Order;
@@ -25,6 +26,7 @@ public class OrderListFragment extends Fragment implements OrderListView{
 
     private OrderListRecycleViewAdapter mAdapter = new OrderListRecycleViewAdapter();
     private OrderListPresenter mOrderListPresenter;
+    private LinearLayoutManager mLinearLayoutManager;
 
 
     public void setOrderListPresenter(OrderListPresenter orderListPresenter) {
@@ -35,9 +37,9 @@ public class OrderListFragment extends Fragment implements OrderListView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.in_work_and_done_fragment, null);
         RecyclerView recyclerViewItems = (RecyclerView) view.findViewById(R.id.in_work_or_done_rv);
-        LinearLayoutManager linearLayoutManager
+        mLinearLayoutManager
                 = new LinearLayoutManager(container.getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerViewItems.setLayoutManager(linearLayoutManager);
+        recyclerViewItems.setLayoutManager(mLinearLayoutManager);
         recyclerViewItems.addOnScrollListener(mOrderListPresenter);
         recyclerViewItems.setAdapter(mAdapter);
         mAdapter.setOnRequestSelectListener(mOrderListPresenter);
@@ -73,5 +75,20 @@ public class OrderListFragment extends Fragment implements OrderListView{
     @Override
     public void hideButton() {
         getFab().hide();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public int getItemCount() {
+        return mLinearLayoutManager.getItemCount();
+    }
+
+    @Override
+    public int findFirstVisibleItemPosition() {
+        return mLinearLayoutManager.findFirstVisibleItemPosition();
     }
 }

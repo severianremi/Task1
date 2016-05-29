@@ -2,7 +2,6 @@ package com.anja.task1.app.data.service;
 
 
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -10,14 +9,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class TicketServiceFactory {
 
+    private TicketServiceFactory() {
+    }
+
     public static <T> T createRetrofitService(final Class<T> clazz, final String url) {
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build();
-        T service = retrofit.create(clazz);
-        return service;
+        return retrofit.create(clazz);
     }
 
 }
