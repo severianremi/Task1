@@ -61,7 +61,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         }
         List<Order> fromServiceOrders = loadFromService(status, amount, offset);
         mOrderDao.saveOrders(fromServiceOrders);
-        orders.addAll(fromServiceOrders);
+        orders = mOrderDao.loadOrders(status);
         return orders;
     }
 

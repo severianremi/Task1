@@ -34,7 +34,6 @@ public class TicketToOrderConverter {
         order.setImages(getListImagesUrl(ticket.getFiles()));
         order.setLikes(ticket.getLikes_counter());
         order.setAddress(getFullAddress(ticket.getUser().getAddress()));
-        //TODO consider how count this Days
         order.setDays((mRandom.nextInt(10) + 2) + " днів");
         order.setIcon(mIcon);
         return order;

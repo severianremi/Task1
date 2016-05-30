@@ -96,6 +96,9 @@ public class OrderListRecycleViewAdapter
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
+            if(itemPosition >= mOrders.size()){
+                return;
+            }
             Order selectedOrder = mOrders.get(itemPosition);
             mOnOrderSelectListener.onOrderSelect(selectedOrder);
         }
